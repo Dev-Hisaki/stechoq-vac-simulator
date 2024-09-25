@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
         rightFingerId = -1;
 
         // hitung setengah screen sekali saja
-        halfScreenWidth = Screen.width/2;
+        halfScreenWidth = Screen.width / 2;
         //Debug.Log("Half Screen Width : " + Screen.width);
         //Debug.Log("Half Screen Width : " + halfScreenWidth);
         analog.SetActive(false);
@@ -44,7 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         GetTouchInput();
 
-        if (rightFingerId != -1) {
+        if (rightFingerId != -1)
+        {
             LookAround();
         }
 
@@ -53,12 +55,14 @@ public class PlayerController : MonoBehaviour
             Move();
             analog.SetActive(true);
         }
-        else { 
+        else
+        {
             analog.SetActive(false);
         }
     }
 
-    void GetTouchInput() {
+    void GetTouchInput()
+    {
         for (int i = 0; i < Input.touchCount; i++)
         {
             Touch touch = Input.GetTouch(i);
@@ -69,17 +73,19 @@ public class PlayerController : MonoBehaviour
                 case TouchPhase.Began:
                     if (touch.position.x < halfScreenWidth && leftFingerId == -1)
                     {
+                        moveInput = Vector2.zero;
                         leftFingerId = touch.fingerId;
+                        //Debug.Log("Touch Position: " + moveInput);
 
                         moveTouchStartPosition = touch.position;
                         analog.transform.position = moveTouchStartPosition;
 
-                        Debug.Log("Left Finger Detected. Touch Position: " + touch.position);
+                        //Debug.Log("Left Finger Detected. Touch Position: " + touch.position);
                     }
                     else if (touch.position.x > halfScreenWidth && rightFingerId == -1)
                     {
                         rightFingerId = touch.fingerId;
-                        Debug.Log("Right Finger Detected. Touch Position: " + touch.position);
+                        //Debug.Log("Right Finger Detected. Touch Position: " + touch.position);
                     }
                     break;
                 case TouchPhase.Ended:
@@ -88,25 +94,28 @@ public class PlayerController : MonoBehaviour
                     {
                         leftFingerId = -1;
                         innerAnalog.transform.position = analog.transform.position;
-                        Debug.Log("Left Finger Lifted");
+                        //Debug.Log("Left Finger Lifted");
                     }
                     else if (touch.fingerId == rightFingerId)
                     {
                         rightFingerId = -1;
-                        Debug.Log("Right Finger Lifted");
+                        //Debug.Log("Right Finger Lifted");
                     }
                     break;
                 case TouchPhase.Moved:
-                    if (touch.fingerId == rightFingerId) {
+                    if (touch.fingerId == rightFingerId)
+                    {
                         lookInput = touch.deltaPosition * camSensitivity * Time.deltaTime;
-                    } else if (touch.fingerId == leftFingerId)
+                    }
+                    else if (touch.fingerId == leftFingerId)
                     {
                         moveInput = touch.position - moveTouchStartPosition;
                         innerAnalog.transform.position = touch.position;
                     }
                     break;
                 case TouchPhase.Stationary:
-                    if (touch.fingerId == rightFingerId) {
+                    if (touch.fingerId == rightFingerId)
+                    {
                         lookInput = Vector2.zero;
                     }
                     break;
@@ -114,7 +123,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void LookAround() {
+    void LookAround()
+    {
         // Vertical (pitch) rotation
         camPitch = Mathf.Clamp(camPitch - lookInput.y, -90f, 90f);
         cameraObject.localRotation = Quaternion.Euler(camPitch, 0, 0);
@@ -123,7 +133,8 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(transform.up, lookInput.x);
     }
 
-    void Move() {
+    void Move()
+    {
         Vector2 moveDirection = moveInput.normalized * moveSpeed * Time.deltaTime;
         characterController.Move(transform.right * moveDirection.x + transform.forward * moveDirection.y);
     }
