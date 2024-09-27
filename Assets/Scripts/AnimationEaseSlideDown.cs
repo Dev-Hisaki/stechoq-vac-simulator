@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class AnimationEaseSlideDown : MonoBehaviour
 {
+    public Vector2 targetToMove;
     private void Awake()
     {
-        transform.LeanMoveLocal(new Vector2(0, 395), 1).setEaseOutQuart();
+        StartAnimation();
+    }
+
+    void StartAnimation() {
+        transform.LeanMoveLocal(targetToMove, 1).setEaseOutQuart();
     }
 }
