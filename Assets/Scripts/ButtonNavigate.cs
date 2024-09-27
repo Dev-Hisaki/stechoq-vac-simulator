@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonNavigate : MonoBehaviour
 {
@@ -14,25 +15,30 @@ public class ButtonNavigate : MonoBehaviour
 
     [Header("Logo Position")]
     public Vector2 endpos;
+    public Vector2 buttonPanelTargetPos;
 
+    private CanvasGroup logosCanvasGroup;
     private CanvasGroup buttonPanelCanvasGroup;
     private CanvasGroup selectionPanelCanvasGroup;
     private CanvasGroup settingsPanelCanvasGroup;
     private CanvasGroup creditPanelCanvasGroup;
     private CanvasGroup quitPanelCanvasGroup;
-    private void Start()
+    void Start()
     {
-        buttonPanelCanvasGroup = buttonPanel.GetComponent<CanvasGroup>();
-        selectionModePanel.gameObject.SetActive(false);
-
         if (selectionModePanel.activeSelf || settingsPanel.activeSelf || creditPanel.activeSelf || quitPanel.activeSelf) { 
             selectionModePanel.SetActive(false);
             settingsPanel.SetActive(false);
             creditPanel.SetActive(false);
             quitPanel.SetActive(false);
         }
-
     }
+
+    // Navigation
+    public void EnterInformationMode() {
+        SceneManager.LoadScene(1);
+    }
+
+    // Animation
     public void OpenSelectionMode()
     {
         buttonPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
@@ -65,7 +71,7 @@ public class ButtonNavigate : MonoBehaviour
 
     public void OpenCredit()
     {
-        settingsPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
+        buttonPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
         logos.LeanMoveLocal(endpos, 1f).setEaseOutQuart();
 
         OpenCreditAnimation();
@@ -73,7 +79,7 @@ public class ButtonNavigate : MonoBehaviour
 
     public void CloseCredit()
     {
-        settingsPanelCanvasGroup.LeanAlpha(1f, 0.5f).setEaseOutQuart();
+        buttonPanelCanvasGroup.LeanAlpha(1f, 0.5f).setEaseOutQuart();
         logos.LeanMoveLocal(new Vector2(650, 440), 1f).setEaseOutQuart();
 
         CloseCreditAnimation();
@@ -81,25 +87,24 @@ public class ButtonNavigate : MonoBehaviour
 
     public void OpenQuit()
     {
-        settingsPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
+        buttonPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
         logos.LeanMoveLocal(endpos, 1f).setEaseOutQuart();
 
-        OpenCreditAnimation();
+        OpenQuitAnimation();
     }
 
     public void CloseQuit()
     {
-        settingsPanelCanvasGroup.LeanAlpha(1f, 0.5f).setEaseOutQuart();
+        buttonPanelCanvasGroup.LeanAlpha(1f, 0.5f).setEaseOutQuart();
         logos.LeanMoveLocal(new Vector2(650, 440), 1f).setEaseOutQuart();
 
-        CloseCreditAnimation();
+        CloseQuitAnimation();
     }
 
     public void Quit() {
         Debug.Log("Apps exit successfully");
         Application.Quit();
     }
-
     private void OpenSelectionModeAnimation()
     {
         selectionModePanel.gameObject.SetActive(true);
@@ -140,6 +145,20 @@ public class ButtonNavigate : MonoBehaviour
         creditPanelCanvasGroup = creditPanel.GetComponent<CanvasGroup>();
         creditPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
         creditPanel.gameObject.SetActive(false);
+    }
+
+    private void OpenQuitAnimation()
+    {
+        quitPanel.gameObject.SetActive(true);
+        quitPanelCanvasGroup = quitPanel.GetComponent<CanvasGroup>();
+        quitPanelCanvasGroup.LeanAlpha(1f, 0.5f).setEaseInQuart();
+    }
+
+    private void CloseQuitAnimation()
+    {
+        quitPanelCanvasGroup = quitPanel.GetComponent<CanvasGroup>();
+        quitPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
+        quitPanel.gameObject.SetActive(false);
     }
 
 }

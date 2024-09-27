@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 42140339}
   - component: {fileID: 42140341}
   - component: {fileID: 42140340}
+  - component: {fileID: 42140342}
   m_Layer: 5
   m_Name: Select Button
   m_TagString: Untagged
@@ -481,6 +482,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42140338}
   m_CullTransparentMesh: 1
+--- !u!114 &42140342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42140338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 42140340}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 498696261}
+        m_TargetAssemblyTypeName: ButtonNavigate, Assembly-CSharp
+        m_MethodName: EnterInformationMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &56129427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1136,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 498696261}
         m_TargetAssemblyTypeName: ButtonNavigate, Assembly-CSharp
-        m_MethodName: CloseSettings
+        m_MethodName: CloseQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1804,7 +1861,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 493848968}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 498696261}
+        m_TargetAssemblyTypeName: ButtonNavigate, Assembly-CSharp
+        m_MethodName: OpenQuit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &493848968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1988,7 +2057,9 @@ MonoBehaviour:
   selectionModePanel: {fileID: 1239997433}
   settingsPanel: {fileID: 2031301754}
   creditPanel: {fileID: 68189499}
-  endpos: {x: 660, y: 653}
+  quitPanel: {fileID: 1902935594}
+  endpos: {x: 0, y: 0}
+  buttonPanelTargetPos: {x: 0, y: 0}
 --- !u!1 &602478967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,7 +2217,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 633623114}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 498696261}
+        m_TargetAssemblyTypeName: ButtonNavigate, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &633623114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2498,8 +2581,6 @@ GameObject:
   - component: {fileID: 721166690}
   - component: {fileID: 721166692}
   - component: {fileID: 721166691}
-  - component: {fileID: 721166693}
-  - component: {fileID: 721166694}
   - component: {fileID: 721166696}
   m_Layer: 5
   m_Name: Panel Button
@@ -2527,10 +2608,10 @@ RectTransform:
   - {fileID: 1394389430}
   m_Father: {fileID: 934089773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 207.53003, y: -1080}
-  m_SizeDelta: {x: 415.0547, y: 1080}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -752.47, y: 0}
+  m_SizeDelta: {x: -1504.9453, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &721166691
 MonoBehaviour:
@@ -2545,7 +2626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.36862746, g: 0.49803922, b: 0.6431373, a: 0.392}
+  m_Color: {r: 0.36862746, g: 0.49803922, b: 0.6431373, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2570,45 +2651,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721166689}
   m_CullTransparentMesh: 1
---- !u!111 &721166693
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721166689}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: ceb999e8f9a9c1c4c969f162fef40498, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: ceb999e8f9a9c1c4c969f162fef40498, type: 2}
-  - {fileID: 7400000, guid: efbcca7e1324ca84790c4960ce11806e, type: 2}
-  - {fileID: 7400000, guid: f18265a6a5387d649aa381c59ca2d402, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!95 &721166694
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721166689}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7fd0db9e1060f364fbd714ddca841c26, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!225 &721166696
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4128,7 +4170,6 @@ GameObject:
   - component: {fileID: 1343763283}
   - component: {fileID: 1343763282}
   - component: {fileID: 1343763285}
-  - component: {fileID: 1343763284}
   m_Layer: 5
   m_Name: Logos
   m_TagString: Untagged
@@ -4152,7 +4193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -300, y: 113}
+  m_AnchoredPosition: {x: -300, y: -100}
   m_SizeDelta: {x: 527, y: 133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1343763282
@@ -4193,19 +4234,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343763279}
   m_CullTransparentMesh: 1
---- !u!114 &1343763284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1343763279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f8da389a3a809438d68b85fc2811d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetToMove: {x: 650, y: 440}
 --- !u!225 &1343763285
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5315,13 +5343,14 @@ GameObject:
   - component: {fileID: 1902935595}
   - component: {fileID: 1902935597}
   - component: {fileID: 1902935596}
+  - component: {fileID: 1902935598}
   m_Layer: 5
   m_Name: Panel Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1902935595
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5380,6 +5409,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902935594}
   m_CullTransparentMesh: 1
+--- !u!225 &1902935598
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902935594}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1928394925
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimationEaseSlideDown : MonoBehaviour
 {
     public Vector2 targetToMove;
-    private void Awake()
+    private void Start()
     {
         StartAnimation();
     }
