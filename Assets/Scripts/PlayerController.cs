@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
     private int leftFingerId, rightFingerId;
-    private float halfScreenWidth;
+    private float halfScreenWidth, halfScreenHeight;
+    private Rect touchArea;
 
     [Header("Camera Settings")]
     public Transform cameraObject;
@@ -33,8 +35,11 @@ public class PlayerController : MonoBehaviour
 
         // hitung setengah screen sekali saja
         halfScreenWidth = Screen.width / 2;
-        //Debug.Log("Half Screen Width : " + Screen.width);
-        //Debug.Log("Half Screen Width : " + halfScreenWidth);
+        halfScreenHeight = Screen.height / 2;
+
+        // Area di seperempat bagian kiri bawah
+        touchArea = new Rect(0, 0, halfScreenWidth, halfScreenHeight);
+
         analog.SetActive(false);
         innerAnalog = analog.transform.GetChild(0).gameObject;
     }
@@ -72,22 +77,17 @@ public class PlayerController : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    if (touch.position.x < halfScreenWidth && leftFingerId == -1)
+                    if (touchArea.Contains(touch.position) && leftFingerId == -1)
                     {
                         moveInput = Vector2.zero;
-                        // Debug.Log("Move Input Value: " + moveInput);
-
                         leftFingerId = touch.fingerId;
 
                         moveTouchStartPosition = touch.position;
                         analog.transform.position = moveTouchStartPosition;
-
-                        // Debug.Log("Left Finger Detected. Touch Position: " + touch.position);
                     }
                     else if (touch.position.x > halfScreenWidth && rightFingerId == -1)
                     {
                         rightFingerId = touch.fingerId;
-                        // Debug.Log("Right Finger Detected. Touch Position: " + touch.position);
                     }
                     break;
                 case TouchPhase.Ended:
@@ -96,12 +96,10 @@ public class PlayerController : MonoBehaviour
                     {
                         leftFingerId = -1;
                         innerAnalog.transform.position = analog.transform.position;
-                        // Debug.Log("Left Finger Lifted");
                     }
                     else if (touch.fingerId == rightFingerId)
                     {
                         rightFingerId = -1;
-                        // Debug.Log("Right Finger Lifted");
                     }
                     break;
                 case TouchPhase.Moved:
