@@ -2058,8 +2058,6 @@ MonoBehaviour:
   settingsPanel: {fileID: 2031301754}
   creditPanel: {fileID: 68189499}
   quitPanel: {fileID: 1902935594}
-  endpos: {x: 0, y: 0}
-  buttonPanelTargetPos: {x: 0, y: 0}
 --- !u!1 &602478967
 GameObject:
   m_ObjectHideFlags: 0
@@ -4191,10 +4189,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 934089773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -300, y: -100}
-  m_SizeDelta: {x: 527, y: 133}
+  m_AnchoredPosition: {x: 870, y: 399}
+  m_SizeDelta: {x: -1813, y: -947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1343763282
 MonoBehaviour:
@@ -4789,7 +4787,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}

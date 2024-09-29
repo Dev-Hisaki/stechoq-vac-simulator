@@ -13,10 +13,6 @@ public class ButtonNavigate : MonoBehaviour
     public GameObject creditPanel;
     public GameObject quitPanel;
 
-    [Header("Logo Position")]
-    public Vector2 endpos;
-    public Vector2 buttonPanelTargetPos;
-
     private CanvasGroup logosCanvasGroup;
     private CanvasGroup buttonPanelCanvasGroup;
     private CanvasGroup selectionPanelCanvasGroup;
@@ -25,7 +21,10 @@ public class ButtonNavigate : MonoBehaviour
     private CanvasGroup quitPanelCanvasGroup;
     void Start()
     {
-        if (selectionModePanel.activeSelf || settingsPanel.activeSelf || creditPanel.activeSelf || quitPanel.activeSelf) { 
+        buttonPanelCanvasGroup = buttonPanel.GetComponent<CanvasGroup>();
+        logosCanvasGroup = logos.GetComponent<CanvasGroup>();
+        if (selectionModePanel.activeSelf || settingsPanel.activeSelf || creditPanel.activeSelf || quitPanel.activeSelf)
+        {
             selectionModePanel.SetActive(false);
             settingsPanel.SetActive(false);
             creditPanel.SetActive(false);
@@ -34,15 +33,16 @@ public class ButtonNavigate : MonoBehaviour
     }
 
     // Navigation
-    public void EnterInformationMode() {
+    public void EnterInformationMode()
+    {
         SceneManager.LoadScene(1);
     }
 
     // Animation
     public void OpenSelectionMode()
     {
-        buttonPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
-        logos.LeanMoveLocal(endpos, 1f).setEaseOutQuart();
+        buttonPanelCanvasGroup.LeanAlpha(0f, 1f).setEaseOutQuart();
+        logosCanvasGroup.LeanAlpha(0f, 1f).setEaseOutQuart();
 
         OpenSelectionModeAnimation();
     }
@@ -50,21 +50,23 @@ public class ButtonNavigate : MonoBehaviour
     public void CloseSelectionMode()
     {
         buttonPanelCanvasGroup.LeanAlpha(1f, 0.5f).setEaseOutQuart();
-        logos.LeanMoveLocal(new Vector2(650, 440), 1f).setEaseOutQuart();
-        
+        logos.LeanAlpha(0f, 1f).setEaseOutQuart();
+
         CloseSelectionModeAnimation();
     }
 
-    public void OpenSettings() {
+    public void OpenSettings()
+    {
         buttonPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
-        logos.LeanMoveLocal(endpos, 1f).setEaseOutQuart();
+        logos.LeanAlpha(0f, 1f).setEaseOutQuart();
 
         OpenSettingsAnimation();
     }
 
-    public void CloseSettings() {
+    public void CloseSettings()
+    {
         buttonPanelCanvasGroup.LeanAlpha(1f, 0.5f).setEaseOutQuart();
-        logos.LeanMoveLocal(new Vector2(650, 440), 1f).setEaseOutQuart();
+        logos.LeanAlpha(0f, 1f).setEaseOutQuart();
 
         CloseSettingsAnimation();
     }
@@ -72,7 +74,7 @@ public class ButtonNavigate : MonoBehaviour
     public void OpenCredit()
     {
         buttonPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
-        logos.LeanMoveLocal(endpos, 1f).setEaseOutQuart();
+        logos.LeanAlpha(0f, 1f).setEaseOutQuart();
 
         OpenCreditAnimation();
     }
@@ -80,7 +82,7 @@ public class ButtonNavigate : MonoBehaviour
     public void CloseCredit()
     {
         buttonPanelCanvasGroup.LeanAlpha(1f, 0.5f).setEaseOutQuart();
-        logos.LeanMoveLocal(new Vector2(650, 440), 1f).setEaseOutQuart();
+        logos.LeanAlpha(0f, 1f).setEaseOutQuart();
 
         CloseCreditAnimation();
     }
@@ -88,7 +90,7 @@ public class ButtonNavigate : MonoBehaviour
     public void OpenQuit()
     {
         buttonPanelCanvasGroup.LeanAlpha(0f, 0.5f).setEaseOutQuart();
-        logos.LeanMoveLocal(endpos, 1f).setEaseOutQuart();
+        logos.LeanAlpha(0f, 1f).setEaseOutQuart();
 
         OpenQuitAnimation();
     }
@@ -96,12 +98,13 @@ public class ButtonNavigate : MonoBehaviour
     public void CloseQuit()
     {
         buttonPanelCanvasGroup.LeanAlpha(1f, 0.5f).setEaseOutQuart();
-        logos.LeanMoveLocal(new Vector2(650, 440), 1f).setEaseOutQuart();
+        logos.LeanAlpha(0f, 1f).setEaseOutQuart();
 
         CloseQuitAnimation();
     }
 
-    public void Quit() {
+    public void Quit()
+    {
         Debug.Log("Apps exit successfully");
         Application.Quit();
     }
