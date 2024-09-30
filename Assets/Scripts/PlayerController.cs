@@ -105,7 +105,16 @@ public class PlayerController : MonoBehaviour
                     else if (touch.fingerId == leftFingerId)
                     {
                         moveInput = touch.position - moveTouchStartPosition;
-                        innerAnalog.transform.position = touch.position;
+
+                        float maxAnalogDistance = 50f;
+                        Vector2 difference = touch.position - moveTouchStartPosition;
+
+                        if (difference.magnitude > maxAnalogDistance)
+                        {
+                            difference = difference.normalized * maxAnalogDistance;
+                        }
+
+                        innerAnalog.transform.position = moveTouchStartPosition + difference;
                     }
                     break;
                 case TouchPhase.Stationary:
