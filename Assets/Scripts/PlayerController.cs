@@ -29,15 +29,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Nilai -1 buat ngasih tau Unity bahwa finger 
         leftFingerId = -1;
         rightFingerId = -1;
 
-        // hitung setengah screen sekali saja
         halfScreenWidth = Screen.width / 2;
         halfScreenHeight = Screen.height / 2;
 
-        // Area di seperempat bagian kiri bawah
         touchArea = new Rect(0, 0, halfScreenWidth, halfScreenHeight);
 
         analog.SetActive(false);
@@ -56,8 +53,6 @@ public class PlayerController : MonoBehaviour
 
         if (leftFingerId != -1)
         {
-            // Ada masalah disini kalau misalkan analog dilepas terus
-            // diteken tanpa input arah, bakalan maju
             Move();
             analog.SetActive(true);
         }
@@ -125,11 +120,9 @@ public class PlayerController : MonoBehaviour
 
     void LookAround()
     {
-        // Vertical (pitch) rotation
         camPitch = Mathf.Clamp(camPitch - lookInput.y, -90f, 90f);
         cameraObject.localRotation = Quaternion.Euler(camPitch, 0, 0);
 
-        // Horizontal (yaw) rotation
         transform.Rotate(transform.up, lookInput.x);
     }
 

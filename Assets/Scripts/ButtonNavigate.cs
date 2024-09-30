@@ -12,6 +12,7 @@ public class ButtonNavigate : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject creditPanel;
     public GameObject quitPanel;
+    public GameObject loadingPanel;
 
     private CanvasGroup logosCanvasGroup;
     private CanvasGroup buttonPanelCanvasGroup;
@@ -23,19 +24,33 @@ public class ButtonNavigate : MonoBehaviour
     {
         buttonPanelCanvasGroup = buttonPanel.GetComponent<CanvasGroup>();
         logosCanvasGroup = logos.GetComponent<CanvasGroup>();
-        if (selectionModePanel.activeSelf || settingsPanel.activeSelf || creditPanel.activeSelf || quitPanel.activeSelf)
+        if (selectionModePanel.activeSelf || settingsPanel.activeSelf || creditPanel.activeSelf || quitPanel.activeSelf || loadingPanel.activeSelf)
         {
             selectionModePanel.SetActive(false);
             settingsPanel.SetActive(false);
             creditPanel.SetActive(false);
             quitPanel.SetActive(false);
+            loadingPanel.SetActive(false);
         }
     }
 
     // Navigation
     public void EnterInformationMode()
     {
-        SceneManager.LoadScene(1);
+        loadingPanel.SetActive(true);
+        Invoke("LoadNextScene", 2f);
+    }
+
+    private void LoadNextScene()
+    {
+
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        int nextScene = currentScene + 1;
+        if (nextScene == SceneManager.sceneCountInBuildSettings)
+        {
+            nextScene = 0;
+        }
+        SceneManager.LoadScene(nextScene);
     }
 
     // Animation
