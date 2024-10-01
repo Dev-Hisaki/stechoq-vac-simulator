@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,18 +18,42 @@ public class PlayerController : MonoBehaviour
     Vector2 lookInput;
     float camPitch;
 
+    [Header("Interaction Settings")]
+    public GameObject informationButton;
+    private CanvasGroup informationButtonCanvasGroup;
+    public float maxDistance = 5f;
+    public LayerMask interactableLayers;
+    public Button interactButton;
+    private Interactable currentInteractable;
+
     [Header("Movement Setting")]
     public CharacterController characterController;
     public float moveSpeed;
     public GameObject analog;
     private GameObject innerAnalog;
+    private CanvasGroup analogCanvasGroup;
+    private RectTransform analogPos;
 
     Vector2 moveTouchStartPosition;
+    Vector2 analogDefaultPos;
     Vector2 moveInput;
 
-    // Start is called before the first frame update
     void Start()
     {
+        if (informationButton.GetComponent<CanvasGroup>() == null)
+        {
+            informationButton.AddComponent<CanvasGroup>();
+        }
+
+        if (analog.GetComponent<CanvasGroup>() == null)
+        {
+            analog.AddComponent<CanvasGroup>();
+        }
+
+        informationButtonCanvasGroup = informationButton.GetComponent<CanvasGroup>();
+        analogCanvasGroup = analog.GetComponent<CanvasGroup>();
+        analogPos = analog.GetComponent<RectTransform>();
+
         leftFingerId = -1;
         rightFingerId = -1;
 
@@ -37,11 +62,13 @@ public class PlayerController : MonoBehaviour
 
         touchArea = new Rect(0, 0, halfScreenWidth, halfScreenHeight);
 
-        analog.SetActive(false);
         innerAnalog = analog.transform.GetChild(0).gameObject;
+        informationButtonCanvasGroup.alpha = 0.25f;
+        analogCanvasGroup.alpha = 0.25f;
+
+        analogDefaultPos = analogPos.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         GetTouchInput();
@@ -53,13 +80,35 @@ public class PlayerController : MonoBehaviour
 
         if (leftFingerId != -1)
         {
+            analogCanvasGroup.alpha = 1f;
             Move();
-            analog.SetActive(true);
         }
         else
         {
-            analog.SetActive(false);
+            analogCanvasGroup.alpha = 0.25f;
         }
+
+        InteractHandler();
+    }
+
+    void InteractHandler()
+    {
+        Debug.DrawRay(cameraObject.position, cameraObject.forward * maxDistance, Color.green);
+        if (Physics.Raycast(cameraObject.position, cameraObject.forward, out RaycastHit hit, maxDistance, interactableLayers))
+        {
+            informationButtonCanvasGroup.alpha = 1f;
+            currentInteractable = hit.collider.GetComponent<Interactable>();
+        }
+        else
+        {
+            informationButtonCanvasGroup.alpha = 0.25f;
+        }
+        interactButton.interactable = currentInteractable != null;
+    }
+
+    public void Interact()
+    {
+        if (currentInteractable) currentInteractable.OnInteraction();
     }
 
     void GetTouchInput()
@@ -91,6 +140,7 @@ public class PlayerController : MonoBehaviour
                     {
                         leftFingerId = -1;
                         innerAnalog.transform.position = analog.transform.position;
+                        analog.transform.position = analogDefaultPos;
                     }
                     else if (touch.fingerId == rightFingerId)
                     {
