@@ -20,16 +20,18 @@ public class PlayerController : MonoBehaviour
 
     [Header("Interaction Settings")]
     public GameObject informationButton;
-    private CanvasGroup informationButtonCanvasGroup;
+    public GameObject informationCanvas;
     public float maxDistance = 5f;
     public LayerMask interactableLayers;
     public Button interactButton;
+    private CanvasGroup informationButtonCanvasGroup;
     private Interactable currentInteractable;
 
     [Header("Movement Setting")]
     public CharacterController characterController;
     public float moveSpeed;
     public GameObject analog;
+    public GameObject pickPoint;
     private GameObject innerAnalog;
     private CanvasGroup analogCanvasGroup;
     private RectTransform analogPos;
@@ -106,7 +108,14 @@ public class PlayerController : MonoBehaviour
         interactButton.interactable = currentInteractable != null;
     }
 
-    public void Interact()
+    public void PickupObject()
+    {
+        if (currentInteractable) currentInteractable.OnInteraction();
+        currentInteractable.transform.SetParent(pickPoint.transform);
+        currentInteractable.transform.localPosition = Vector3.zero;
+    }
+
+    public void ShowInformation()
     {
         if (currentInteractable) currentInteractable.OnInteraction();
     }
