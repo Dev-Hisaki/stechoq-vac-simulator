@@ -10,6 +10,8 @@ public class Interactable : MonoBehaviour
     public void OnInteraction()
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.RightFingerId = -1;
+        playerController.LeftFingerId = -1;
         playerController.enabled = false;
         uIControllerCanvas.SetActive(false);
         informationCanvas.SetActive(true);

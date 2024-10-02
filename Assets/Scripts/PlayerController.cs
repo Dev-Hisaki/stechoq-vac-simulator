@@ -40,6 +40,18 @@ public class PlayerController : MonoBehaviour
     Vector2 analogDefaultPos;
     Vector2 moveInput;
 
+    public int RightFingerId
+    {
+        get { return rightFingerId; }
+        set { rightFingerId = value; }
+    }
+    public int LeftFingerId
+    {
+        get { return leftFingerId; }
+        set { leftFingerId = value; }
+    }
+
+
     void Start()
     {
         if (informationButton.GetComponent<CanvasGroup>() == null)
