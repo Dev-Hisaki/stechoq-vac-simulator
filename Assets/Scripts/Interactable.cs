@@ -7,14 +7,15 @@ public class Interactable : MonoBehaviour
     public GameObject informationCanvas;
     public GameObject uIControllerCanvas;
     public GameObject player;
-    public void OnInteraction()
+    public void OnInteraction(int id)
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
+        SpawnUIObject itemUISpawner = informationCanvas.GetComponent<SpawnUIObject>();
         playerController.RightFingerId = -1;
         playerController.LeftFingerId = -1;
         playerController.enabled = false;
         uIControllerCanvas.SetActive(false);
         informationCanvas.SetActive(true);
-        Debug.Log("Interact!");
+        itemUISpawner.SpawnUIObjectAtPoint(id);
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class RotateObject : MonoBehaviour
 {
     private Quaternion defaultRotation;
+    public Vector3 rotationDir = Vector3.zero;
+
 
     void Start()
     {
@@ -13,7 +15,7 @@ public class RotateObject : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.forward, 1.0f, Space.Self);
+        transform.Rotate(rotationDir, 1.0f, Space.Self);
     }
 
     void OnDisable()

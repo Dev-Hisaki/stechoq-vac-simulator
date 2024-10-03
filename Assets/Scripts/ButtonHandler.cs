@@ -20,6 +20,7 @@ public class ButtonHandler : MonoBehaviour
     [Header("Canvas")]
     public GameObject uIControllerCanvas;
     public GameObject informationCanvas;
+    public GameObject objectPosition;
 
     public CanvasGroup pausePanelCanvasGroup;
     private CanvasGroup controlPanelCanvasGroup;
@@ -90,6 +91,10 @@ public class ButtonHandler : MonoBehaviour
     public void CloseInformationPanel()
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
+        if (objectPosition.transform.childCount > 0)
+        {
+            Destroy(objectPosition.transform.GetChild(0).gameObject);
+        }
         playerController.enabled = true;
         uIControllerCanvas.SetActive(true);
         informationCanvas.SetActive(false);

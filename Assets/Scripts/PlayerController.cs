@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public Button interactButton;
     private CanvasGroup informationButtonCanvasGroup;
     private Interactable currentInteractable;
+    private AssetId asetId;
 
     [Header("Movement Setting")]
     public CharacterController characterController;
@@ -112,24 +113,27 @@ public class PlayerController : MonoBehaviour
         {
             informationButtonCanvasGroup.alpha = 1f;
             currentInteractable = hit.collider.GetComponent<Interactable>();
+            asetId = hit.collider.GetComponent<AssetId>();
         }
         else
         {
+            currentInteractable = null;
             informationButtonCanvasGroup.alpha = 0.25f;
         }
         interactButton.interactable = currentInteractable != null;
     }
 
-    public void PickupObject()
-    {
-        if (currentInteractable) currentInteractable.OnInteraction();
-        currentInteractable.transform.SetParent(pickPoint.transform);
-        currentInteractable.transform.localPosition = Vector3.zero;
-    }
+    // public void PickupObject()
+    // {
+    //     if (currentInteractable) currentInteractable.OnInteraction(id);
+    //     currentInteractable.transform.SetParent(pickPoint.transform);
+    //     currentInteractable.transform.localPosition = Vector3.zero;
+    // }
 
     public void ShowInformation()
     {
-        if (currentInteractable) currentInteractable.OnInteraction();
+        int id = asetId.getId;
+        if (currentInteractable) currentInteractable.OnInteraction(id);
     }
 
     void GetTouchInput()
