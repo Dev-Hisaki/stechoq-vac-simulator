@@ -29,9 +29,16 @@ public class SpawnUIObject : MonoBehaviour
                     Debug.Log("Item Desc: " + itemId.getDesc);
                     itemNameText.text = itemId.getName.ToString();
                     itemDescText.text = itemId.getDesc.ToString();
+                    UpdateContentSizeFitter(itemDescText);
                     Instantiate(item, spawnUIPoint.transform.position, Quaternion.identity, spawnUIPoint.transform);
                 }
             }
         }
+    }
+
+    void UpdateContentSizeFitter(TextMeshProUGUI textMeshPro)
+    {
+        RectTransform textAreaRectTransform = textMeshPro.GetComponentInParent<RectTransform>();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(textAreaRectTransform);
     }
 }
