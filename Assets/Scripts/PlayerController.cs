@@ -14,9 +14,11 @@ public class PlayerController : MonoBehaviour
     [Header("Camera Settings")]
     public Transform cameraObject;
     public float camSensitivity;
-
     Vector2 lookInput;
     float camPitch;
+    private Vector2 currentLookInput;
+    private Vector2 lookInputSmoothVelocity;
+    public float lookSmoothTime = 0.1f;
 
     [Header("Interaction Settings")]
     public GameObject informationButton;
@@ -204,9 +206,10 @@ public class PlayerController : MonoBehaviour
 
     void LookAround()
     {
+        currentLookInput = Vector2.SmoothDamp(currentLookInput, lookInput, ref lookInputSmoothVelocity, lookSmoothTime);
         camPitch = Mathf.Clamp(camPitch - lookInput.y, -90f, 90f);
-        cameraObject.localRotation = Quaternion.Euler(camPitch, 0, 0);
-
+        Quaternion targetCamRotation = Quaternion.Euler(camPitch, 0, 0);
+        cameraObject.localRotation = Quaternion.Slerp(cameraObject.localRotation, targetCamRotation, Time.deltaTime * camSensitivity);
         transform.Rotate(transform.up, lookInput.x);
     }
 
