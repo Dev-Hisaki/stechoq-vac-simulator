@@ -1348,10 +1348,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   itemName: VAC
-  desc: 'VAC merupakan singkatan dari Vacuum Assisted Closure
-
-    Merupakan alat
-    yang berfungsi untuk menyedot luka'
+  desc: Mesin Vacuum-Assisted Closure (VAC) atau terapi luka tekanan negatif (Negative
+    Pressure Wound Therapy, NPWT) adalah perangkat medis yang digunakan untuk mempercepat
+    penyembuhan luka. Mesin ini bekerja dengan cara memberikan tekanan negatif (vakum)
+    pada luka melalui dressing khusus yang menutupi area luka. Vakum ini menghisap
+    eksudat (cairan luka) berlebih, meningkatkan aliran darah ke area luka, dan membantu
+    mengurangi pembengkakan serta infeksi. Metode ini juga membantu menyatukan tepi
+    luka dan merangsang pembentukan jaringan baru, sehingga mempercepat proses penyembuhan
+    luka, terutama pada luka kronis atau luka bedah yang sulit sembuh.
 --- !u!1 &3229830206219086589
 GameObject:
   m_ObjectHideFlags: 0

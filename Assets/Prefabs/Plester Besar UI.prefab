@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 13474277765749446}
-  - component: {fileID: 2496920554159212137}
-  - component: {fileID: 4156639794640152327}
   - component: {fileID: -5971478617334265670}
   - component: {fileID: 4155906137837594438}
   m_Layer: 5
@@ -32,59 +30,10 @@ Transform:
   m_LocalPosition: {x: -0.009, y: 0, z: 0.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5672475303807601529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2496920554159212137
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626668256640559535}
-  m_Mesh: {fileID: -2628482395200241503, guid: b2e317282de84484e9fb968c1ff5fd00, type: 3}
---- !u!23 &4156639794640152327
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626668256640559535}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 1003485184193443222, guid: b2e317282de84484e9fb968c1ff5fd00, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &-5971478617334265670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,4 +61,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   itemName: Plester (Besar)
-  desc: 
+  desc: 'Plester besar yang digunakan dalam terapi Vacuum-Assisted Closure (VAC)
+    adalah dressing khusus yang berfungsi untuk menutupi dan menjaga agar area luka
+    tetap tertutup dan steril. Plester ini biasanya terbuat dari bahan yang kedap
+    udara dan memiliki daya rekat yang kuat, sehingga dapat menahan foam dan sistem
+    vakum di tempatnya.
+
+
+    Fungsi utama plester besar ini adalah untuk menciptakan
+    segel yang mencegah masuknya kotoran dan mikroba ke dalam luka, sekaligus memastikan
+    bahwa tekanan negatif dari terapi VAC dapat bekerja dengan efektif. Plester ini
+    juga dirancang agar fleksibel dan nyaman, sehingga tidak mengganggu pergerakan
+    pasien. Ukuran plester dapat bervariasi, tergantung pada ukuran luka, dan biasanya
+    dilengkapi dengan jendela transparan untuk memudahkan pemantauan luka tanpa harus
+    membuka dressing.'
+--- !u!1001 &5274303683257805970
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 13474277765749446}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25.808687
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 25.808687
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9848078
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.17364816
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1003485184193443222, guid: b2e317282de84484e9fb968c1ff5fd00, type: 3}
+    - target: {fileID: 919132149155446097, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_Name
+      value: PLESTER UV FIXED
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+--- !u!4 &5672475303807601529 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bc6ca51381efc0a4eaea232af7920414, type: 3}
+  m_PrefabInstance: {fileID: 5274303683257805970}
+  m_PrefabAsset: {fileID: 0}

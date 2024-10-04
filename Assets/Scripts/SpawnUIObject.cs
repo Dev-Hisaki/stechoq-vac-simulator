@@ -23,10 +23,10 @@ public class SpawnUIObject : MonoBehaviour
                 AssetId itemId = item.GetComponent<AssetId>();
                 if (item != null && itemId.getId == id)
                 {
-                    Debug.Log("Item ID: " + id);
-                    Debug.Log("Item UIID: " + itemId.getId);
-                    Debug.Log("Item Name: " + itemId.getName);
-                    Debug.Log("Item Desc: " + itemId.getDesc);
+                    // Debug.Log("Item ID: " + id);
+                    // Debug.Log("Item UIID: " + itemId.getId);
+                    // Debug.Log("Item Name: " + itemId.getName);
+                    // Debug.Log("Item Desc: " + itemId.getDesc);
                     itemNameText.text = itemId.getName.ToString();
                     itemDescText.text = itemId.getDesc.ToString();
                     UpdateContentSizeFitter(itemDescText);

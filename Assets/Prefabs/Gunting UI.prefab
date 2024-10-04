@@ -61,12 +61,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   itemName: Gunting
-  desc: 'Ini adalah gunting
+  desc: 'Gunting yang digunakan dalam terapi Vacuum-Assisted Closure (VAC) adalah
+    gunting medis khusus yang dirancang untuk memotong foam dan dressing sesuai dengan
+    bentuk dan ukuran luka. Gunting ini harus memiliki bilah tajam dan presisi agar
+    bisa memotong foam dengan rapi dan tanpa merusak struktur materialnya. Penggunaan
+    gunting yang tepat membantu memastikan bahwa foam dapat ditempatkan dengan sempurna
+    di dalam luka, sehingga tekanan negatif dapat didistribusikan dengan merata.
 
-    Gunting dipakai untuk memotong benda tipis
 
-    Seperti
-    kertas, plastik, dsb.'
+    Selain
+    itu, gunting yang dipakai harus steril untuk mencegah kontaminasi pada area luka,
+    karena terapi VAC sering digunakan pada luka yang rentan terhadap infeksi. Gunting
+    medis ini juga biasanya memiliki pegangan ergonomis untuk memudahkan penggunaan
+    dalam lingkungan klinis.'
 --- !u!1 &5035517977034025948
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,8 @@ public class ButtonHandler : MonoBehaviour
     public GameObject informationCanvas;
     public GameObject objectPosition;
 
-    public CanvasGroup pausePanelCanvasGroup;
+    private CanvasGroup informationCanvasGroup;
+    private CanvasGroup pausePanelCanvasGroup;
     private CanvasGroup controlPanelCanvasGroup;
     private CanvasGroup settingsPanelCanvasGroup;
     private CanvasGroup quitPanelCanvasGroup;
@@ -90,13 +91,26 @@ public class ButtonHandler : MonoBehaviour
 
     public void CloseInformationPanel()
     {
-        PlayerController playerController = player.GetComponent<PlayerController>();
+        informationCanvasGroup = informationCanvas.GetComponent<CanvasGroup>();
         if (objectPosition.transform.childCount > 0)
         {
             Destroy(objectPosition.transform.GetChild(0).gameObject);
         }
+        LeanTween.alphaCanvas(informationCanvasGroup, 0f, 0.5f).setEaseInOutQuart();
+        Invoke("FadeInformationCanvas", 0.5f);
+        Invoke("ActivateController", 0.5f);
+
+    }
+
+    void FadeInformationCanvas()
+    {
+        informationCanvas.SetActive(false);
+    }
+
+    void ActivateController()
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
         playerController.enabled = true;
         uIControllerCanvas.SetActive(true);
-        informationCanvas.SetActive(false);
     }
 }

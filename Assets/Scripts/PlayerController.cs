@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float maxDistance = 5f;
     public LayerMask interactableLayers;
     public Button interactButton;
+    public CanvasGroup informationCanvasGroup;
     private CanvasGroup informationButtonCanvasGroup;
     private Interactable currentInteractable;
     private AssetId asetId;
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
         }
 
         informationButtonCanvasGroup = informationButton.GetComponent<CanvasGroup>();
+        informationCanvasGroup = informationCanvas.GetComponent<CanvasGroup>();
         analogCanvasGroup = analog.GetComponent<CanvasGroup>();
         analogPos = analog.GetComponent<RectTransform>();
 
@@ -134,8 +136,12 @@ public class PlayerController : MonoBehaviour
 
     public void ShowInformation()
     {
-        int id = asetId.getId;
-        if (currentInteractable) currentInteractable.OnInteraction(id);
+        if (currentInteractable)
+        {
+            int id = asetId.getId;
+            currentInteractable.OnInteraction(id);
+            informationCanvasGroup.LeanAlpha(1f, 0.5f).setEaseInOutQuart();
+        }
     }
 
     void GetTouchInput()
