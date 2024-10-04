@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519b876965789524fb160a70bbbeed48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationDir: {x: 0, y: 100, z: 100}
+  rotationDir: {x: 0, y: 1, z: 0}
 --- !u!114 &4155906137837594438
 MonoBehaviour:
   m_ObjectHideFlags: 0
