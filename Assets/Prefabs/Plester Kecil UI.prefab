@@ -112,16 +112,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   itemName: Plester (Kecil)
-  desc: 'Plester kecil yang digunakan dalam terapi Vacuum-Assisted Closure (VAC)
-    adalah dressing tambahan yang berfungsi untuk menjaga agar sistem vakum tetap
-    terpasang dengan baik dan mengamankan foam di tempatnya. Plester ini biasanya
-    terbuat dari bahan yang sama dengan plester besar, yaitu kedap udara dan memiliki
-    daya rekat yang kuat.
+  desc: '
 
-
-    Fungsi utama plester kecil ini adalah untuk menciptakan
-    segel yang lebih kuat di sekitar tepi luka, sehingga membantu mencegah kebocoran
-    udara dan cairan. Plester ini juga membantu melindungi area luka dari kontaminasi
-    eksternal. Ukurannya yang kecil memungkinkan untuk digunakan di area yang lebih
-    sempit atau di sekitar tepi dressing besar, dan biasanya digunakan bersamaan
-    dengan plester besar untuk memastikan stabilitas dan efektivitas terapi VAC.'
+    Plester kecil dalam terapi Vacuum-Assisted Closure (VAC) adalah dressing
+    tambahan yang berfungsi untuk memperkuat segel di sekitar tepi luka, mencegah
+    kebocoran udara dan cairan, serta menjaga foam dan sistem vakum tetap terpasang.
+    Terbuat dari bahan kedap udara dengan daya rekat kuat, plester ini membantu melindungi
+    luka dari kontaminasi eksternal. Ukurannya yang kecil memungkinkan penggunaan
+    di area sempit atau di sekitar tepi plester besar, bekerja bersamaan untuk memastikan
+    stabilitas dan efektivitas terapi VAC.'

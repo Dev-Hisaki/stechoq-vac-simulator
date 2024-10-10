@@ -61,20 +61,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   itemName: Plester (Besar)
-  desc: 'Plester besar yang digunakan dalam terapi Vacuum-Assisted Closure (VAC)
-    adalah dressing khusus yang berfungsi untuk menutupi dan menjaga agar area luka
-    tetap tertutup dan steril. Plester ini biasanya terbuat dari bahan yang kedap
-    udara dan memiliki daya rekat yang kuat, sehingga dapat menahan foam dan sistem
-    vakum di tempatnya.
+  desc: '
 
-
-    Fungsi utama plester besar ini adalah untuk menciptakan
-    segel yang mencegah masuknya kotoran dan mikroba ke dalam luka, sekaligus memastikan
-    bahwa tekanan negatif dari terapi VAC dapat bekerja dengan efektif. Plester ini
-    juga dirancang agar fleksibel dan nyaman, sehingga tidak mengganggu pergerakan
-    pasien. Ukuran plester dapat bervariasi, tergantung pada ukuran luka, dan biasanya
-    dilengkapi dengan jendela transparan untuk memudahkan pemantauan luka tanpa harus
-    membuka dressing.'
+    Dalam terapi Vacuum-Assisted Closure (VAC), plester besar digunakan
+    untuk menutup dan menjaga area luka tetap tertutup serta steril. Plester ini
+    biasanya terbuat dari bahan kedap udara dengan daya rekat kuat, sehingga dapat
+    menahan foam dan sistem vakum di tempatnya. Fungsi utamanya adalah menciptakan
+    segel yang mencegah masuknya kotoran dan mikroba ke dalam luka, serta memastikan
+    tekanan negatif dari terapi VAC bekerja efektif. Selain itu, plester ini dirancang
+    fleksibel dan nyaman, tidak mengganggu pergerakan pasien, dan sering dilengkapi
+    dengan jendela transparan untuk memudahkan pemantauan luka tanpa harus membuka
+    dressing.'
 --- !u!1001 &5274303683257805970
 PrefabInstance:
   m_ObjectHideFlags: 0

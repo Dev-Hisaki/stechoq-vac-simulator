@@ -1348,14 +1348,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   itemName: VAC
-  desc: Mesin Vacuum-Assisted Closure (VAC) atau terapi luka tekanan negatif (Negative
-    Pressure Wound Therapy, NPWT) adalah perangkat medis yang digunakan untuk mempercepat
-    penyembuhan luka. Mesin ini bekerja dengan cara memberikan tekanan negatif (vakum)
-    pada luka melalui dressing khusus yang menutupi area luka. Vakum ini menghisap
-    eksudat (cairan luka) berlebih, meningkatkan aliran darah ke area luka, dan membantu
-    mengurangi pembengkakan serta infeksi. Metode ini juga membantu menyatukan tepi
-    luka dan merangsang pembentukan jaringan baru, sehingga mempercepat proses penyembuhan
-    luka, terutama pada luka kronis atau luka bedah yang sulit sembuh.
+  desc: Mesin Vacuum-Assisted Closure (VAC) atau terapi luka tekanan negatif (NPWT)
+    adalah perangkat medis yang mempercepat penyembuhan dengan memberikan tekanan
+    negatif pada luka. Melalui dressing khusus, mesin ini menghisap cairan luka (eksudat)
+    berlebih, meningkatkan aliran darah, mengurangi pembengkakan, serta membantu
+    mencegah infeksi. Proses ini menyatukan tepi luka dan merangsang pembentukan
+    jaringan baru, membuat metode ini efektif dalam penyembuhan luka kronis atau
+    bedah yang sulit sembuh.
 --- !u!1 &3229830206219086589
 GameObject:
   m_ObjectHideFlags: 0

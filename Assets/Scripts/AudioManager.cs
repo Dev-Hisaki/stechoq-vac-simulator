@@ -37,8 +37,8 @@ public class AudioManager : MonoBehaviour
         if (currentSceneid == 0)
         {
             Play("BGM");
+            ChangeBGMVolume(BGMSlider);
         }
-        ChangeBGMVolume(BGMSlider);
     }
 
     public void Play(string name)
@@ -83,7 +83,14 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeVolume(VolumeAttribute volumeAttribute)
     {
-
+        string musicCategory = volumeAttribute.category.ToString();
+        Sound s = Array.Find(sounds, sound => sound.name == musicCategory);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.volume = volumeAttribute.volume;
     }
 
     public struct VolumeAttribute

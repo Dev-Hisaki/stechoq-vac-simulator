@@ -313,19 +313,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   itemName: Foam
-  desc: 'Foam yang digunakan dalam terapi Vacuum-Assisted Closure (VAC) adalah material
-    berpori yang ditempatkan langsung pada luka untuk membantu distribusi tekanan
-    negatif secara merata. Foam ini berfungsi sebagai media yang memungkinkan cairan
-    luka (eksudat) diserap dan dibuang melalui sistem vakum. Biasanya, foam terbuat
-    dari bahan polyurethane atau polyvinyl alcohol, yang memiliki tingkat fleksibilitas
-    dan daya serap tinggi.
-
-
-    Foam membantu menjaga lingkungan luka tetap lembap,
-    yang penting untuk proses penyembuhan. Ukurannya dapat disesuaikan dengan bentuk
-    dan kedalaman luka, sehingga memungkinkan aplikasi yang lebih personal. Setelah
-    foam ditempatkan, ditutup dengan lapisan film transparan kedap udara untuk menciptakan
-    lingkungan tertutup, di mana vakum kemudian diaplikasikan.'
+  desc: Foam dalam terapi Vacuum-Assisted Closure (VAC) adalah material berpori yang
+    berfungsi menyerap cairan luka (eksudat) dan mendistribusikan tekanan negatif
+    secara merata untuk mempercepat penyembuhan. Biasanya terbuat dari polyurethane
+    atau polyvinyl alcohol, foam ini fleksibel, dapat disesuaikan dengan bentuk luka,
+    dan menjaga kelembapan optimal pada area luka. Setelah ditempatkan, foam ditutup
+    dengan lapisan film kedap udara untuk menciptakan lingkungan tertutup, memungkinkan
+    sistem vakum bekerja efektif dalam mengeluarkan cairan dan mempercepat regenerasi
+    jaringan.
 --- !u!1 &5963655391442216315
 GameObject:
   m_ObjectHideFlags: 0
