@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine;
@@ -19,7 +20,6 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
         foreach (Sound sound in sounds)
         {
             sound.source = gameObject.AddComponent<AudioSource>();
@@ -32,8 +32,13 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+        int currentSceneid = currentScene.buildIndex;
+        if (currentSceneid == 0)
+        {
+            Play("BGM");
+        }
         ChangeBGMVolume(BGMSlider);
-        Play("BGM");
     }
 
     public void Play(string name)

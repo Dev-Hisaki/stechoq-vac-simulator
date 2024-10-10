@@ -44,10 +44,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af071d581398edf43b26c205040b8b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGMSlider: {fileID: 0}
+  SFXSlider: {fileID: 0}
   sounds:
   - name: BGM
     clip: {fileID: 8300000, guid: 24bce801ed0b99d448089db0bb511d48, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.1
+    pitch: 1
     loop: 1
     source: {fileID: 0}
+    musicType: 0
+  - name: Default Click Sound
+    clip: {fileID: 8300000, guid: c5ee0f2bbcf7d1b409de1c29b68f3e59, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    musicType: 1
+  - name: Back Sound
+    clip: {fileID: 8300000, guid: 98dd7bd87436d334a9792ca3d3880038, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    musicType: 1
+  - name: Interaction Sound
+    clip: {fileID: 8300000, guid: 7ab5a966a3f91614c8cb32bb90aa8e4e, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    musicType: 1
