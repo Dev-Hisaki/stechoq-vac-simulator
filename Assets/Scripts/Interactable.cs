@@ -18,4 +18,10 @@ public class Interactable : MonoBehaviour
         informationCanvas.SetActive(true);
         itemUISpawner.SpawnUIObjectAtPoint(id);
     }
+
+    public void SpawnInHand(int id)
+    {
+        SpawnUIObject itemUISpawner = informationCanvas.GetComponent<SpawnUIObject>();
+        itemUISpawner.SpawnObjectOnHand(id);
+    }
 }

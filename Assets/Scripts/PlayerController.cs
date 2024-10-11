@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public float maxDistance = 5f;
     public LayerMask interactableLayers;
     public Button interactButton;
-    public CanvasGroup informationCanvasGroup;
+    private CanvasGroup informationCanvasGroup;
     private CanvasGroup informationButtonCanvasGroup;
     private Interactable currentInteractable;
     private AssetId asetId;
@@ -69,7 +69,10 @@ public class PlayerController : MonoBehaviour
         }
 
         informationButtonCanvasGroup = informationButton.GetComponent<CanvasGroup>();
-        informationCanvasGroup = informationCanvas.GetComponent<CanvasGroup>();
+        if (informationCanvas != null)
+        {
+            informationCanvasGroup = informationCanvas.GetComponent<CanvasGroup>();
+        }
         analogCanvasGroup = analog.GetComponent<CanvasGroup>();
         analogPos = analog.GetComponent<RectTransform>();
 
@@ -127,12 +130,13 @@ public class PlayerController : MonoBehaviour
         interactButton.interactable = currentInteractable != null;
     }
 
-    // public void PickupObject()
-    // {
-    //     if (currentInteractable) currentInteractable.OnInteraction(id);
-    //     currentInteractable.transform.SetParent(pickPoint.transform);
-    //     currentInteractable.transform.localPosition = Vector3.zero;
-    // }
+    public void PickupObject()
+    {
+        int id = asetId.getId;
+        if (currentInteractable) currentInteractable.SpawnInHand(id);
+        currentInteractable.transform.SetParent(pickPoint.transform);
+        currentInteractable.transform.localPosition = Vector3.zero;
+    }
 
     public void ShowInformation()
     {
