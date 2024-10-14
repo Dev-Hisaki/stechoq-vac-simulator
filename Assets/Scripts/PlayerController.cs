@@ -138,6 +138,21 @@ public class PlayerController : MonoBehaviour
         currentInteractable.transform.localPosition = Vector3.zero;
     }
 
+    public void DropObject()
+    {
+        if (pickPoint.transform.childCount > 0)
+        {
+            Transform itemInPickpoint = pickPoint.transform.GetChild(0);
+            AssetId asetId = itemInPickpoint.GetComponent<AssetId>();
+            int id = asetId.getId;
+            if (currentInteractable) currentInteractable.DropItem(id);
+        }
+        else
+        {
+            Debug.Log("Child on pickpoint: " + pickPoint.transform.childCount);
+        }
+    }
+
     public void ShowInformation()
     {
         if (currentInteractable)

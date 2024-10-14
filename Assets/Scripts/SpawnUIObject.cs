@@ -8,6 +8,7 @@ public class SpawnUIObject : MonoBehaviour
 {
     public GameObject spawnUIPoint;
     public GameObject[] items;
+    public Vector3 offset = Vector3.zero;
 
     [Header("Text Desc Properties")]
     public TextMeshProUGUI itemNameText;
@@ -42,9 +43,32 @@ public class SpawnUIObject : MonoBehaviour
                 AssetId itemId = item.GetComponent<AssetId>();
                 if (item != null && itemId.getId == id)
                 {
-                    Instantiate(item, spawnUIPoint.transform.position, Quaternion.identity, spawnUIPoint.transform);
+                    Quaternion objectRotation = Quaternion.Euler(7f, -15f, 80f);
+                    item.transform.rotation = objectRotation;
+                    Instantiate(item, spawnUIPoint.transform.position, objectRotation, spawnUIPoint.transform);
                 }
             }
+        }
+    }
+
+    public void DropItemInHand(int id)
+    {
+        if (spawnUIPoint.transform.childCount > 0)
+        {
+            foreach (GameObject item in items)
+            {
+                Debug.Log(id);
+                AssetId itemId = item.GetComponent<AssetId>();
+                if (item != null && itemId.getId == id)
+                {
+                    Debug.Log("Item Dropped");
+                    Instantiate(item, spawnUIPoint.transform.position + offset, Quaternion.identity);
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("No item in hand");
         }
     }
 
