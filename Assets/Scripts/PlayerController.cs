@@ -43,6 +43,10 @@ public class PlayerController : MonoBehaviour
     Vector2 moveTouchStartPosition;
     Vector2 analogDefaultPos;
     Vector2 moveInput;
+    [Header("Questing System")]
+    public GameObject goalsManagerObject;
+    private GoalsManager goalsManager;
+    bool firstQuest = true;
 
     public int RightFingerId
     {
@@ -76,6 +80,8 @@ public class PlayerController : MonoBehaviour
         analogCanvasGroup = analog.GetComponent<CanvasGroup>();
         analogPos = analog.GetComponent<RectTransform>();
 
+        goalsManager = goalsManagerObject.GetComponent<GoalsManager>();
+
         leftFingerId = -1;
         rightFingerId = -1;
 
@@ -89,6 +95,8 @@ public class PlayerController : MonoBehaviour
         analogCanvasGroup.alpha = 0.25f;
 
         analogDefaultPos = analogPos.position;
+
+        firstQuest = true;
     }
 
     void Update()
@@ -201,6 +209,11 @@ public class PlayerController : MonoBehaviour
                     }
                     break;
                 case TouchPhase.Moved:
+                    if (firstQuest == true)
+                    {
+                        goalsManager.Completed();
+                        firstQuest = false;
+                    }
                     if (touch.fingerId == rightFingerId)
                     {
                         lookInput = touch.deltaPosition * camSensitivity * Time.deltaTime;
