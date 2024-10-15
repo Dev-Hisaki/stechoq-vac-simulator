@@ -144,8 +144,9 @@ public class PlayerController : MonoBehaviour
         {
             Transform itemInPickpoint = pickPoint.transform.GetChild(0);
             AssetId asetId = itemInPickpoint.GetComponent<AssetId>();
+            Interactable currentItem = itemInPickpoint.GetComponent<Interactable>();
             int id = asetId.getId;
-            if (currentInteractable) currentInteractable.DropItem(id);
+            currentItem.DropItem(id);
         }
         else
         {

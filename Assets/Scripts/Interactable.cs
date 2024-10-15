@@ -28,7 +28,6 @@ public class Interactable : MonoBehaviour
     public void DropItem(int id)
     {
         SpawnUIObject itemUISpawner = informationCanvas.GetComponent<SpawnUIObject>();
-        itemUISpawner.SpawnObjectOnHand(id);
-        Debug.Log("DropItem initiated");
+        itemUISpawner.DropItemInHand(id);
     }
 }
