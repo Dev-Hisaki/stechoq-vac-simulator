@@ -38,14 +38,30 @@ public class ButtonNavigate : MonoBehaviour
     public void EnterInformationMode()
     {
         loadingPanel.SetActive(true);
-        Invoke("LoadNextScene", 2f);
+        Invoke("LoadInformationScene", 2f);
     }
 
-    private void LoadNextScene()
+    public void EnterSimulationMode()
     {
+        loadingPanel.SetActive(true);
+        Invoke("LoadSimulationScene", 2f);
+    }
 
+    private void LoadInformationScene()
+    {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int nextScene = currentScene + 1;
+        if (nextScene == SceneManager.sceneCountInBuildSettings)
+        {
+            nextScene = 0;
+        }
+        SceneManager.LoadScene(nextScene);
+    }
+
+    private void LoadSimulationScene()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        int nextScene = currentScene + 2;
         if (nextScene == SceneManager.sceneCountInBuildSettings)
         {
             nextScene = 0;

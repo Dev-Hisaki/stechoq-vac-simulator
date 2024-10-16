@@ -453,7 +453,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 498696261}
         m_TargetAssemblyTypeName: ButtonNavigate, Assembly-CSharp
-        m_MethodName: EnterInformationMode
+        m_MethodName: EnterSimulationMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3242,7 +3242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.36862746, g: 0.49803922, b: 0.6431373, a: 1}
+  m_Color: {r: 0.54725885, g: 0.767792, b: 0.8113208, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

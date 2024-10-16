@@ -20,7 +20,6 @@ public class SpawnUIObject : MonoBehaviour
         {
             foreach (GameObject item in items)
             {
-                Debug.Log(id);
                 AssetId itemId = item.GetComponent<AssetId>();
                 if (item != null && itemId.getId == id)
                 {
@@ -39,7 +38,6 @@ public class SpawnUIObject : MonoBehaviour
         {
             foreach (GameObject item in items)
             {
-                Debug.Log(id);
                 AssetId itemId = item.GetComponent<AssetId>();
                 if (item != null && itemId.getId == id)
                 {
@@ -48,31 +46,6 @@ public class SpawnUIObject : MonoBehaviour
                     Instantiate(item, spawnUIPoint.transform.position, objectRotation, spawnUIPoint.transform);
                 }
             }
-        }
-    }
-
-    public void DropItemInHand(int id)
-    {
-        if (spawnUIPoint.transform.childCount > 0)
-        {
-            foreach (GameObject item in items)
-            {
-                Debug.Log(id + " dropped");
-                AssetId itemId = item.GetComponent<AssetId>();
-                if (item != null && itemId.getId == id)
-                {
-                    Debug.Log("Item Dropped");
-                    Instantiate(item, spawnUIPoint.transform.position + offset, Quaternion.identity);
-                }
-                else
-                {
-                    Debug.Log("itemId: " + item + " | ID: " + id);
-                }
-            }
-        }
-        else
-        {
-            Debug.Log("No item in hand");
         }
     }
 

@@ -30,5 +30,6 @@ public class GoalsManager : MonoBehaviour
     public void Completed()
     {
         id++;
+        SetInstruction(id);
     }
 }

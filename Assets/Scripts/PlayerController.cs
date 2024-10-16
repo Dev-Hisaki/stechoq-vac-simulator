@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -43,10 +44,12 @@ public class PlayerController : MonoBehaviour
     Vector2 moveTouchStartPosition;
     Vector2 analogDefaultPos;
     Vector2 moveInput;
+
     [Header("Questing System")]
     public GameObject goalsManagerObject;
     private GoalsManager goalsManager;
     bool firstQuest = true;
+    int sceneId;
 
     public int RightFingerId
     {
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        sceneId = SceneManager.GetActiveScene().buildIndex;
         if (informationButton.GetComponent<CanvasGroup>() == null)
         {
             informationButton.AddComponent<CanvasGroup>();
@@ -80,7 +84,14 @@ public class PlayerController : MonoBehaviour
         analogCanvasGroup = analog.GetComponent<CanvasGroup>();
         analogPos = analog.GetComponent<RectTransform>();
 
-        goalsManager = goalsManagerObject.GetComponent<GoalsManager>();
+        if (sceneId == 2)
+        {
+            goalsManager = goalsManagerObject.GetComponent<GoalsManager>();
+        }
+        else
+        {
+            goalsManager = null;
+        }
 
         leftFingerId = -1;
         rightFingerId = -1;
@@ -141,25 +152,35 @@ public class PlayerController : MonoBehaviour
     public void PickupObject()
     {
         int id = asetId.getId;
-        if (currentInteractable) currentInteractable.SpawnInHand(id);
-        currentInteractable.transform.SetParent(pickPoint.transform);
-        currentInteractable.transform.localPosition = Vector3.zero;
-    }
+        int handItemId = -1;
 
-    public void DropObject()
-    {
+        if (pickPoint.transform.childCount == 0)
+        {
+            if (currentInteractable != null)
+            {
+                currentInteractable.SpawnInHand(id);
+                currentInteractable.transform.SetParent(pickPoint.transform);
+                currentInteractable.transform.localPosition = Vector3.zero;
+                handItemId = id;
+                Debug.Log("HandItemId: " + handItemId);
+                if (handItemId == 1) goalsManager.Completed();
+            }
+            return;
+        }
+
         if (pickPoint.transform.childCount > 0)
         {
-            Transform itemInPickpoint = pickPoint.transform.GetChild(0);
-            AssetId asetId = itemInPickpoint.GetComponent<AssetId>();
-            Interactable currentItem = itemInPickpoint.GetComponent<Interactable>();
-            int id = asetId.getId;
-            currentItem.DropItem(id);
+            if (currentInteractable != null && id == 2)
+            {
+                Minigame();
+            }
         }
-        else
-        {
-            Debug.Log("Child on pickpoint: " + pickPoint.transform.childCount);
-        }
+    }
+
+    public void Minigame()
+    {
+        Minigames minigames = new Minigames();
+        minigames.FoamCutting();
     }
 
     public void ShowInformation()
@@ -209,7 +230,7 @@ public class PlayerController : MonoBehaviour
                     }
                     break;
                 case TouchPhase.Moved:
-                    if (firstQuest == true)
+                    if (firstQuest == true && sceneId == 2)
                     {
                         goalsManager.Completed();
                         firstQuest = false;
