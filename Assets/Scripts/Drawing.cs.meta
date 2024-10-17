@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-guid: 70b96ce15290cdc4883eb22502a7b9de
+guid: d4e6a0c13717e7547923f32f5863d362
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - foam: {instanceID: 0}
-  - bigDresser: {instanceID: 0}
-  - hole: {instanceID: 0}
-  - VAC: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

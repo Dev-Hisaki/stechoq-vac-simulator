@@ -46,10 +46,20 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
 
     [Header("Questing System")]
+    public GameObject minigameObject;
+    private Minigames minigame;
     public GameObject goalsManagerObject;
     private GoalsManager goalsManager;
     bool firstQuest = true;
     int sceneId;
+
+    [Header("Interactable Objects")]
+    public GameObject gunting;
+    private Vector3 guntingDefaultPosition;
+    public GameObject foamKotak;
+    public GameObject bigDresser;
+    public GameObject hole;
+    public GameObject VAC;
 
     public int RightFingerId
     {
@@ -65,6 +75,12 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        guntingDefaultPosition = gunting.transform.position;
+        minigame = minigameObject.GetComponent<Minigames>();
+        if (foamKotak == null || bigDresser == null || hole == null || VAC == null)
+        {
+            Debug.LogWarning("is null");
+        }
         sceneId = SceneManager.GetActiveScene().buildIndex;
         if (informationButton.GetComponent<CanvasGroup>() == null)
         {
@@ -162,8 +178,10 @@ public class PlayerController : MonoBehaviour
                 currentInteractable.transform.SetParent(pickPoint.transform);
                 currentInteractable.transform.localPosition = Vector3.zero;
                 handItemId = id;
-                Debug.Log("HandItemId: " + handItemId);
-                if (handItemId == 1) goalsManager.Completed();
+                Debug.Log("HandItemId: " + handItemId + " || ID: " + id);
+
+                if (handItemId == 1 && id == 1) goalsManager.Completed();
+                if (handItemId == 2 && id == 2) goalsManager.Completed();
             }
             return;
         }
@@ -172,15 +190,19 @@ public class PlayerController : MonoBehaviour
         {
             if (currentInteractable != null && id == 2)
             {
-                Minigame();
+                Debug.LogWarning(currentInteractable + " || " + id);
+
+                Instantiate(gunting, guntingDefaultPosition, Quaternion.identity);
+                minigame.FoamCutting(foamKotak);
+
+                Transform guntingInHand = pickPoint.transform.GetChild(0);
+                Destroy(guntingInHand.gameObject);
+            }
+            else
+            {
+                Debug.LogWarning(currentInteractable + " || " + id);
             }
         }
-    }
-
-    public void Minigame()
-    {
-        Minigames minigames = new Minigames();
-        minigames.FoamCutting();
     }
 
     public void ShowInformation()
@@ -199,7 +221,6 @@ public class PlayerController : MonoBehaviour
         {
             Touch touch = Input.GetTouch(i);
 
-            // Cek setiap fase sentuhan
             switch (touch.phase)
             {
                 case TouchPhase.Began:

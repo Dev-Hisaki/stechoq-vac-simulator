@@ -16,7 +16,7 @@ public class DrawWithTouch : MonoBehaviour
         line = GetComponent<LineRenderer>();
         line.positionCount = 1;
         line.startWidth = line.endWidth = width;
-        prevPosition = transform.position;
+        // prevPosition = transform.position;
     }
 
     void Update()
@@ -27,14 +27,17 @@ public class DrawWithTouch : MonoBehaviour
 
             if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Began)
             {
-                Vector3 currentPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                Vector3 currentPosition = Camera.main.ScreenToViewportPoint(touch.position);
                 currentPosition.z = 0f;
+                Debug.Log("Touch position: " + touch.position);
+                Debug.Log("Current position: " + currentPosition);
 
                 if (Vector3.Distance(currentPosition, prevPosition) > minDistance)
                 {
                     if (prevPosition == transform.position)
                     {
                         Debug.Log("Not Lined");
+                        Debug.Log(currentPosition);
                         line.SetPosition(0, currentPosition);
                     }
                     else

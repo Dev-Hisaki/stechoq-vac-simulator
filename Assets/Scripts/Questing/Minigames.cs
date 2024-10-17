@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Minigames : MonoBehaviour
 {
-    public void FoamCutting()
+    public void FoamCutting(GameObject foam)
     {
+        Destroy(foam);
+        FindAnyObjectByType<GoalsManager>().Completed();
         Debug.Log("Foam Cutting");
     }
 
