@@ -10,6 +10,15 @@ public class GoalsManager : MonoBehaviour
     public Goals[] goals;
     private int id = -1;
 
+    public int getMissionId
+    {
+        get
+        {
+            Debug.Log("Mission ID: " + id);
+            return id;
+        }
+    }
+
     private void Start()
     {
         id++;

@@ -57,9 +57,11 @@ public class PlayerController : MonoBehaviour
     public GameObject gunting;
     private Vector3 guntingDefaultPosition;
     public GameObject foamKotak;
+    public GameObject foamPatient;
     public GameObject bigDresser;
     public GameObject hole;
     public GameObject VAC;
+    int handItemId;
 
     public int RightFingerId
     {
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        handItemId = -1;
         guntingDefaultPosition = gunting.transform.position;
         minigame = minigameObject.GetComponent<Minigames>();
         if (foamKotak == null || bigDresser == null || hole == null || VAC == null)
@@ -156,6 +159,11 @@ public class PlayerController : MonoBehaviour
             informationButtonCanvasGroup.alpha = 1f;
             currentInteractable = hit.collider.GetComponent<Interactable>();
             asetId = hit.collider.GetComponent<AssetId>();
+
+            if (currentInteractable == null || asetId == null)
+            {
+                Debug.LogWarning("Current Interactable or Asset id not found");
+            }
         }
         else
         {
@@ -168,7 +176,7 @@ public class PlayerController : MonoBehaviour
     public void PickupObject()
     {
         int id = asetId.getId;
-        int handItemId = -1;
+        int missionId = goalsManager.getMissionId;
 
         if (pickPoint.transform.childCount == 0)
         {
@@ -188,15 +196,26 @@ public class PlayerController : MonoBehaviour
 
         if (pickPoint.transform.childCount > 0)
         {
-            if (currentInteractable != null && id == 2)
+            Debug.Log("HandItemId: " + handItemId + " || Item ID: " + id + " || Mission ID: " + missionId);
+            if (currentInteractable != null)
             {
-                Debug.LogWarning(currentInteractable + " || " + id);
 
-                Instantiate(gunting, guntingDefaultPosition, Quaternion.identity);
-                minigame.FoamCutting(foamKotak);
+                Transform itemInHand = pickPoint.transform.GetChild(0);
+                if (handItemId == 1 && id == 2)
+                {
+                    Debug.LogWarning(currentInteractable + " || " + id);
 
-                Transform guntingInHand = pickPoint.transform.GetChild(0);
-                Destroy(guntingInHand.gameObject);
+                    Instantiate(gunting, guntingDefaultPosition, Quaternion.identity);
+                    minigame.FoamCutting(foamKotak);
+                    Destroy(itemInHand.gameObject);
+                }
+                if (handItemId == 2 && missionId == 4)
+                {
+                    Debug.LogWarning(currentInteractable + " || " + id);
+
+                    minigame.FoamApplying(foamPatient);
+                    Destroy(itemInHand.gameObject);
+                }
             }
             else
             {

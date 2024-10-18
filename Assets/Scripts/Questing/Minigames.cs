@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Minigames : MonoBehaviour
 {
+    GoalsManager objective;
+    private void Awake()
+    {
+        objective = FindAnyObjectByType<GoalsManager>();
+    }
+
     public void FoamCutting(GameObject foam)
     {
         Destroy(foam);
-        FindAnyObjectByType<GoalsManager>().Completed();
+        objective.Completed();
         Debug.Log("Foam Cutting");
     }
 
-    public void FoamApplying()
+    public void FoamApplying(GameObject patientFoam)
     {
+        if (patientFoam.activeSelf == true)
+        {
+            Debug.LogWarning("Foam Already Applied");
+            return;
+        }
+        else
+        {
+            patientFoam.SetActive(true);
+            objective.Completed();
+        }
         Debug.Log("Foam Applying");
     }
 
