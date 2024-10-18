@@ -32,6 +32,14 @@ public class Minigames : MonoBehaviour
         Debug.Log("Foam Applying");
     }
 
+    public void BigDresserUncover(GameObject bigDresser, Material newMaterial)
+    {
+        MeshRenderer meshRenderer = bigDresser.GetComponent<MeshRenderer>();
+        meshRenderer.material = newMaterial;
+        objective.Completed();
+        Debug.Log("Cover released");
+    }
+
     public void BigDresserApplying()
     {
         Debug.Log("Big Dresser Applying");

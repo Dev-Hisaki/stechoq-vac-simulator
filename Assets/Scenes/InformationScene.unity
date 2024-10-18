@@ -2877,75 +2877,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369136180}
   m_Mesh: {fileID: -1230832213447598219, guid: b2e317282de84484e9fb968c1ff5fd00, type: 3}
---- !u!1001 &404400549
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 799265834}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.945555
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.945555
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.945555
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-      propertyPath: m_Name
-      value: DOKTER BOYKE
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
 --- !u!1 &423596628
 GameObject:
   m_ObjectHideFlags: 0
@@ -3670,6 +3601,7 @@ MonoBehaviour:
   - {fileID: 4249041587015418246, guid: da92fb94f77aa264683b6131d665767f, type: 3}
   - {fileID: 5626668256640559535, guid: a724fd7f6976acc47a389593a0fde059, type: 3}
   - {fileID: 269259291109293346, guid: e21908d14d73800489306b3b55f6cdd5, type: 3}
+  offset: {x: 0, y: 0, z: 0}
   itemNameText: {fileID: 2092083726}
   itemDescText: {fileID: 254628524}
 --- !u!225 &487200339
@@ -5855,7 +5787,6 @@ Transform:
   m_Children:
   - {fileID: 963194228}
   - {fileID: 197750557}
-  - {fileID: 1672970916}
   - {fileID: 613415686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -5898,8 +5829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraObject: {fileID: 963194228}
-  camSensitivity: 10
   lookSmoothTime: 0.1
+  camSensitivity: 10
   informationButton: {fileID: 1867713844}
   informationCanvas: {fileID: 487200333}
   maxDistance: 5
@@ -5907,11 +5838,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   interactButton: {fileID: 255865437561339527}
-  informationCanvasGroup: {fileID: 0}
   characterController: {fileID: 799265835}
   moveSpeed: 8
   analog: {fileID: 124081679}
   pickPoint: {fileID: 613415685}
+  minigameObject: {fileID: 0}
+  goalsManagerObject: {fileID: 0}
+  gunting: {fileID: 0}
+  foamKotak: {fileID: 0}
+  foamPatient: {fileID: 0}
+  bigDresser: {fileID: 0}
+  uncoverButton: {fileID: 0}
+  uncoverButtonOffset: {x: 0, y: 0, z: 0}
+  hole: {fileID: 0}
+  VAC: {fileID: 0}
 --- !u!136 &799265837
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12989,11 +12929,6 @@ CanvasRenderer:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5720675876653825698, guid: e774ee5b9f8ad6e45a2d40a7efcc1e21, type: 3}
   m_PrefabInstance: {fileID: 8301915109291757688}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1672970916 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
-  m_PrefabInstance: {fileID: 404400549}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1701449224
 GameObject:

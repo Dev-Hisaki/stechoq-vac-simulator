@@ -12,16 +12,16 @@ public class PlayerController : MonoBehaviour
     private float halfScreenWidth, halfScreenHeight;
     private Rect touchArea;
 
-    [Header("Camera Settings")]
+    [Header("Camera Settings"), Tooltip("Configure Camera Settings")]
     public Transform cameraObject;
+    [Range(0.1f, 1f)] public float lookSmoothTime = 0.1f;
     public float camSensitivity;
     Vector2 lookInput;
     float camPitch;
     private Vector2 currentLookInput;
     private Vector2 lookInputSmoothVelocity;
-    public float lookSmoothTime = 0.1f;
 
-    [Header("Interaction Settings")]
+    [Header("Interaction Settings"), Tooltip("Corelated with canvas component on this project")]
     public GameObject informationButton;
     public GameObject informationCanvas;
     public float maxDistance = 5f;
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private Interactable currentInteractable;
     private AssetId asetId;
 
-    [Header("Movement Setting")]
+    [Header("Movement Setting"), Tooltip("Setting up movement of the player")]
     public CharacterController characterController;
     public float moveSpeed;
     public GameObject analog;
@@ -40,12 +40,11 @@ public class PlayerController : MonoBehaviour
     private GameObject innerAnalog;
     private CanvasGroup analogCanvasGroup;
     private RectTransform analogPos;
+    private Vector2 moveTouchStartPosition;
+    private Vector2 analogDefaultPos;
+    private Vector2 moveInput;
 
-    Vector2 moveTouchStartPosition;
-    Vector2 analogDefaultPos;
-    Vector2 moveInput;
-
-    [Header("Questing System")]
+    [Header("Questing System"), Tooltip("Many code got from questing folder")]
     public GameObject minigameObject;
     private Minigames minigame;
     public GameObject goalsManagerObject;
@@ -53,13 +52,23 @@ public class PlayerController : MonoBehaviour
     bool firstQuest = true;
     int sceneId;
 
-    [Header("Interactable Objects")]
+    [Header("Interactable Objects"), Tooltip("Special settings for simulation room")]
     public GameObject gunting;
     private Vector3 guntingDefaultPosition;
+
+    [Space(25)]
     public GameObject foamKotak;
     public GameObject foamPatient;
+
+    [Space(25)]
     public GameObject bigDresser;
+    public GameObject uncoverButton;
+    public Material bigDresserNewMaterial;
+
+    [Space(25)]
     public GameObject hole;
+
+    [Space(25)]
     public GameObject VAC;
     int handItemId;
 
@@ -74,69 +83,76 @@ public class PlayerController : MonoBehaviour
         set { leftFingerId = value; }
     }
 
-
     void Start()
     {
-        handItemId = -1;
-        guntingDefaultPosition = gunting.transform.position;
-        minigame = minigameObject.GetComponent<Minigames>();
-        if (foamKotak == null || bigDresser == null || hole == null || VAC == null)
-        {
-            Debug.LogWarning("is null");
-        }
+        if (analog.GetComponent<CanvasGroup>() == null) analog.AddComponent<CanvasGroup>();
+        if (informationButton.GetComponent<CanvasGroup>() == null) informationButton.AddComponent<CanvasGroup>();
+
         sceneId = SceneManager.GetActiveScene().buildIndex;
-        if (informationButton.GetComponent<CanvasGroup>() == null)
-        {
-            informationButton.AddComponent<CanvasGroup>();
-        }
-
-        if (analog.GetComponent<CanvasGroup>() == null)
-        {
-            analog.AddComponent<CanvasGroup>();
-        }
-
+        informationCanvasGroup = informationCanvas.GetComponent<CanvasGroup>();
         informationButtonCanvasGroup = informationButton.GetComponent<CanvasGroup>();
-        if (informationCanvas != null)
-        {
-            informationCanvasGroup = informationCanvas.GetComponent<CanvasGroup>();
-        }
-        analogCanvasGroup = analog.GetComponent<CanvasGroup>();
         analogPos = analog.GetComponent<RectTransform>();
-
-        if (sceneId == 2)
-        {
-            goalsManager = goalsManagerObject.GetComponent<GoalsManager>();
-        }
-        else
-        {
-            goalsManager = null;
-        }
+        analogCanvasGroup = analog.GetComponent<CanvasGroup>();
 
         leftFingerId = -1;
         rightFingerId = -1;
-
         halfScreenWidth = Screen.width / 2;
         halfScreenHeight = Screen.height / 2;
-
         touchArea = new Rect(0, 0, halfScreenWidth, halfScreenHeight);
-
         innerAnalog = analog.transform.GetChild(0).gameObject;
         informationButtonCanvasGroup.alpha = 0.25f;
         analogCanvasGroup.alpha = 0.25f;
-
         analogDefaultPos = analogPos.position;
 
         firstQuest = true;
+
+        switch (sceneId)
+        {
+            case 0:
+                Debug.Log("Main Menu");
+                break;
+
+            case 1:
+                analogCanvasGroup = analog.GetComponent<CanvasGroup>();
+                minigameObject = null;
+                minigame = null;
+                goalsManagerObject = null;
+                goalsManager = null;
+                gunting = null;
+                guntingDefaultPosition = Vector3.zero;
+                foamKotak = null;
+                foamPatient = null;
+                bigDresser = null;
+                uncoverButton = null;
+                hole = null;
+                VAC = null;
+                break;
+
+            case 2:
+                handItemId = -1;
+                guntingDefaultPosition = gunting.transform.position;
+                minigame = minigameObject.GetComponent<Minigames>();
+                goalsManager = goalsManagerObject.GetComponent<GoalsManager>();
+
+                if (foamKotak == null || bigDresser == null || hole == null || VAC == null)
+                {
+                    Debug.LogWarning("is null");
+                }
+
+                break;
+
+            default:
+                goalsManager = null;
+                break;
+        }
     }
 
     void Update()
     {
         GetTouchInput();
+        InteractHandler();
 
-        if (rightFingerId != -1)
-        {
-            LookAround();
-        }
+        if (rightFingerId != -1) LookAround();
 
         if (leftFingerId != -1)
         {
@@ -147,8 +163,6 @@ public class PlayerController : MonoBehaviour
         {
             analogCanvasGroup.alpha = 0.25f;
         }
-
-        InteractHandler();
     }
 
     void InteractHandler()
@@ -178,6 +192,8 @@ public class PlayerController : MonoBehaviour
         int id = asetId.getId;
         int missionId = goalsManager.getMissionId;
 
+        Debug.Log("HandItemId: " + handItemId + " || Item ID: " + id + " || Mission ID: " + missionId);
+
         if (pickPoint.transform.childCount == 0)
         {
             if (currentInteractable != null)
@@ -186,35 +202,56 @@ public class PlayerController : MonoBehaviour
                 currentInteractable.transform.SetParent(pickPoint.transform);
                 currentInteractable.transform.localPosition = Vector3.zero;
                 handItemId = id;
-                Debug.Log("HandItemId: " + handItemId + " || ID: " + id);
 
                 if (handItemId == 1 && id == 1) goalsManager.Completed();
                 if (handItemId == 2 && id == 2) goalsManager.Completed();
+                if (handItemId == 3 && missionId == 5)
+                {
+                    uncoverButton.SetActive(true);
+                    goalsManager.Completed();
+                }
             }
             return;
         }
 
         if (pickPoint.transform.childCount > 0)
         {
-            Debug.Log("HandItemId: " + handItemId + " || Item ID: " + id + " || Mission ID: " + missionId);
+            if (handItemId == 3 && missionId == 6) minigame.BigDresserUncover(bigDresser, bigDresserNewMaterial);
+            if (missionId == 6) Destroy(uncoverButton.gameObject);
             if (currentInteractable != null)
             {
-
                 Transform itemInHand = pickPoint.transform.GetChild(0);
-                if (handItemId == 1 && id == 2)
-                {
-                    Debug.LogWarning(currentInteractable + " || " + id);
 
-                    Instantiate(gunting, guntingDefaultPosition, Quaternion.identity);
-                    minigame.FoamCutting(foamKotak);
-                    Destroy(itemInHand.gameObject);
-                }
-                if (handItemId == 2 && missionId == 4)
+                switch (handItemId)
                 {
-                    Debug.LogWarning(currentInteractable + " || " + id);
+                    case 1: // Gunting
+                        if (id == 2)
+                        {
+                            Debug.LogWarning(currentInteractable + " || " + id);
 
-                    minigame.FoamApplying(foamPatient);
-                    Destroy(itemInHand.gameObject);
+                            Instantiate(gunting, guntingDefaultPosition, Quaternion.identity);
+                            minigame.FoamCutting(foamKotak);
+                            Destroy(itemInHand.gameObject);
+                        }
+                        break;
+                    case 2: // Foam
+                        if (missionId == 4)
+                        {
+                            Debug.LogWarning(currentInteractable + " || " + id);
+
+                            minigame.FoamApplying(foamPatient);
+                            Destroy(itemInHand.gameObject);
+                        }
+                        break;
+                    case 3: // Dresser Besar
+                        Debug.Log("Dresser Besar");
+                        break;
+                    case 4: // Dresser Kecil
+                        Debug.Log("Dresser Kecil");
+                        break;
+                    default: // No Item in Hand
+                        Debug.LogWarning("No Item in Hand");
+                        break;
                 }
             }
             else
@@ -295,10 +332,7 @@ public class PlayerController : MonoBehaviour
                     }
                     break;
                 case TouchPhase.Stationary:
-                    if (touch.fingerId == rightFingerId)
-                    {
-                        lookInput = Vector2.zero;
-                    }
+                    if (touch.fingerId == rightFingerId) lookInput = Vector2.zero;
                     break;
             }
         }
