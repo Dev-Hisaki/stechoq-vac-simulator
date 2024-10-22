@@ -64,6 +64,9 @@ public class PlayerController : MonoBehaviour
     public GameObject bigDresser;
     public GameObject uncoverButton;
     public Material bigDresserNewMaterial;
+    public GameObject patientBigDresser;
+    public GameObject patientHoledBigDresser;
+    bool isCovered = true;
 
     [Space(25)]
     public GameObject hole;
@@ -126,6 +129,8 @@ public class PlayerController : MonoBehaviour
                 uncoverButton = null;
                 hole = null;
                 VAC = null;
+                patientBigDresser = null;
+                patientHoledBigDresser = null;
                 break;
 
             case 2:
@@ -203,8 +208,8 @@ public class PlayerController : MonoBehaviour
                 currentInteractable.transform.localPosition = Vector3.zero;
                 handItemId = id;
 
-                if (handItemId == 1 && id == 1) goalsManager.Completed();
-                if (handItemId == 2 && id == 2) goalsManager.Completed();
+                if (handItemId == 1 && missionId == 1 || missionId == 8) goalsManager.Completed();
+                if (handItemId == 2 && missionId == 3) goalsManager.Completed();
                 if (handItemId == 3 && missionId == 5)
                 {
                     uncoverButton.SetActive(true);
@@ -216,7 +221,11 @@ public class PlayerController : MonoBehaviour
 
         if (pickPoint.transform.childCount > 0)
         {
-            if (handItemId == 3 && missionId == 6) minigame.BigDresserUncover(bigDresser, bigDresserNewMaterial);
+            if (handItemId == 3 && missionId == 6)
+            {
+                minigame.BigDresserUncover(bigDresser, bigDresserNewMaterial);
+                isCovered = false;
+            }
             if (missionId == 6) Destroy(uncoverButton.gameObject);
             if (currentInteractable != null)
             {
@@ -225,12 +234,18 @@ public class PlayerController : MonoBehaviour
                 switch (handItemId)
                 {
                     case 1: // Gunting
-                        if (id == 2)
+                        if (missionId == 2)
                         {
                             Debug.LogWarning(currentInteractable + " || " + id);
 
                             Instantiate(gunting, guntingDefaultPosition, Quaternion.identity);
                             minigame.FoamCutting(foamKotak);
+                            Destroy(itemInHand.gameObject);
+                        }
+
+                        if (missionId == 9)
+                        {
+                            minigame.HoleCutting(patientBigDresser, patientHoledBigDresser);
                             Destroy(itemInHand.gameObject);
                         }
                         break;
@@ -244,6 +259,18 @@ public class PlayerController : MonoBehaviour
                         }
                         break;
                     case 3: // Dresser Besar
+                        if (isCovered)
+                        {
+                            Debug.LogWarning("Uncover dresser first");
+                        }
+                        else
+                        {
+                            if (missionId == 7)
+                            {
+                                minigame.BigDresserApplying(patientBigDresser);
+                                Destroy(itemInHand.gameObject);
+                            }
+                        }
                         Debug.Log("Dresser Besar");
                         break;
                     case 4: // Dresser Kecil

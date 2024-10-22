@@ -40,13 +40,34 @@ public class Minigames : MonoBehaviour
         Debug.Log("Cover released");
     }
 
-    public void BigDresserApplying()
+    public void BigDresserApplying(GameObject patientDresser)
     {
+        if (patientDresser.activeSelf == true)
+        {
+            Debug.LogWarning("Dresser Already Applied");
+            return;
+        }
+        else
+        {
+            patientDresser.SetActive(true);
+            objective.Completed();
+        }
         Debug.Log("Big Dresser Applying");
     }
 
-    public void HoleCutting()
+    public void HoleCutting(GameObject patientBigDresser, GameObject patienBigDresserHole)
     {
+        if (patientBigDresser.activeSelf == false && patienBigDresserHole.activeSelf == true)
+        {
+            Debug.LogWarning("Hole Already Created");
+            return;
+        }
+        else
+        {
+            patientBigDresser.SetActive(false);
+            patienBigDresserHole.SetActive(true);
+            objective.Completed();
+        }
         Debug.Log("Hole Cutting");
     }
 

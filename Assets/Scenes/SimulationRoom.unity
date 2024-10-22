@@ -3899,6 +3899,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 995578814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &535669940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3553175203180474203, guid: 24fe6c7876a2b754597bbc394a3246ba, type: 3}
+  m_PrefabInstance: {fileID: 805868773}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &561623094
 GameObject:
   m_ObjectHideFlags: 0
@@ -6184,6 +6189,8 @@ MonoBehaviour:
   bigDresser: {fileID: 845335234}
   uncoverButton: {fileID: 1727040238}
   bigDresserNewMaterial: {fileID: 4646176674502666069, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
+  patientBigDresser: {fileID: 535669940}
+  patientHoledBigDresser: {fileID: 2013088488}
   hole: {fileID: 0}
   VAC: {fileID: 0}
 --- !u!136 &799265837
@@ -14829,6 +14836,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967527074}
   m_CullTransparentMesh: 1
+--- !u!1 &2013088488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6989494073819062302, guid: 24fe6c7876a2b754597bbc394a3246ba, type: 3}
+  m_PrefabInstance: {fileID: 805868773}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2016191853
 GameObject:
   m_ObjectHideFlags: 0
