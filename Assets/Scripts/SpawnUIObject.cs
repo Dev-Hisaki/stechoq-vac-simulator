@@ -43,12 +43,6 @@ public class SpawnUIObject : MonoBehaviour
                 {
                     Quaternion objectRotation = Quaternion.Euler(7f, -15f, 80f);
                     item.transform.rotation = objectRotation;
-                    if (id == 5)
-                    {
-                        GameObject parentItem = item.gameObject.transform.parent.gameObject;
-                        // Instantiate(parentItem, spawnUIPoint.transform.position, objectRotation, spawnUIPoint.transform);
-                        return;
-                    }
                     Instantiate(item, spawnUIPoint.transform.position, objectRotation, spawnUIPoint.transform);
                 }
             }

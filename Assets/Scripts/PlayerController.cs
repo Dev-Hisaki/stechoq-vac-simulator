@@ -215,6 +215,7 @@ public class PlayerController : MonoBehaviour
                     uncoverButton.SetActive(true);
                     goalsManager.Completed();
                 }
+                if (handItemId == 5 && missionId == 10) goalsManager.Completed();
             }
             return;
         }
@@ -275,6 +276,9 @@ public class PlayerController : MonoBehaviour
                         break;
                     case 4: // Dresser Kecil
                         Debug.Log("Dresser Kecil");
+                        break;
+                    case 5: // Selang
+                        Debug.Log("Selang");
                         break;
                     default: // No Item in Hand
                         Debug.LogWarning("No Item in Hand");
