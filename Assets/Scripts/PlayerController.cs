@@ -69,10 +69,8 @@ public class PlayerController : MonoBehaviour
     bool isCovered = true;
 
     [Space(25)]
-    public GameObject hole;
+    public GameObject selangAtVAC;
 
-    [Space(25)]
-    public GameObject VAC;
     int handItemId;
 
     public int RightFingerId
@@ -127,8 +125,7 @@ public class PlayerController : MonoBehaviour
                 foamPatient = null;
                 bigDresser = null;
                 uncoverButton = null;
-                hole = null;
-                VAC = null;
+                selangAtVAC = null;
                 patientBigDresser = null;
                 patientHoledBigDresser = null;
                 break;
@@ -139,7 +136,7 @@ public class PlayerController : MonoBehaviour
                 minigame = minigameObject.GetComponent<Minigames>();
                 goalsManager = goalsManagerObject.GetComponent<GoalsManager>();
 
-                if (foamKotak == null || bigDresser == null || hole == null || VAC == null)
+                if (foamKotak == null || bigDresser == null)
                 {
                     Debug.LogWarning("is null");
                 }
@@ -278,6 +275,10 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("Dresser Kecil");
                         break;
                     case 5: // Selang
+                        if (missionId == 11 && id == 0)
+                        {
+                            minigame.PipeToVAC(selangAtVAC);
+                        }
                         Debug.Log("Selang");
                         break;
                     default: // No Item in Hand

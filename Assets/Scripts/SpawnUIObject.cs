@@ -36,14 +36,22 @@ public class SpawnUIObject : MonoBehaviour
     {
         if (spawnUIPoint.transform.childCount == 0)
         {
-            foreach (GameObject item in items)
+            if (id == 0)
             {
-                AssetId itemId = item.GetComponent<AssetId>();
-                if (item != null && itemId.getId == id)
+                Debug.Log("VAC");
+                return;
+            }
+            else
+            {
+                foreach (GameObject item in items)
                 {
-                    Quaternion objectRotation = Quaternion.Euler(7f, -15f, 80f);
-                    item.transform.rotation = objectRotation;
-                    Instantiate(item, spawnUIPoint.transform.position, objectRotation, spawnUIPoint.transform);
+                    AssetId itemId = item.GetComponent<AssetId>();
+                    if (item != null && itemId.getId == id)
+                    {
+                        Quaternion objectRotation = Quaternion.Euler(7f, -15f, 80f);
+                        item.transform.rotation = objectRotation;
+                        Instantiate(item, spawnUIPoint.transform.position, objectRotation, spawnUIPoint.transform);
+                    }
                 }
             }
         }

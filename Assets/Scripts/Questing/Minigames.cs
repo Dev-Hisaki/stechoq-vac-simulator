@@ -76,6 +76,14 @@ public class Minigames : MonoBehaviour
         Debug.Log("Small Dresser Applying");
     }
 
+    public void PipeToVAC(GameObject selangInVAC)
+    {
+        if (selangInVAC.activeSelf) return;
+        selangInVAC.SetActive(true);
+        objective.Completed();
+        Debug.Log("Pipe installed");
+    }
+
     public void VACActivation()
     {
         Debug.Log("Activating VAC");
