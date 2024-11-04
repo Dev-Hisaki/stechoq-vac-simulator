@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
     [Space(25)]
     public GameObject selangAtVAC;
+    public GameObject pipeline;
 
     int handItemId;
 
@@ -194,7 +195,7 @@ public class PlayerController : MonoBehaviour
         int id = asetId.getId;
         int missionId = goalsManager.getMissionId;
 
-        Debug.Log("HandItemId: " + handItemId + " || Item ID: " + id + " || Mission ID: " + missionId);
+        Debug.Log("HandItemId: " + handItemId + " || ID: " + id + " || Mission ID: " + missionId);
 
         if (pickPoint.transform.childCount == 0)
         {
@@ -214,6 +215,11 @@ public class PlayerController : MonoBehaviour
                     goalsManager.Completed();
                 }
                 if (handItemId == 5 && missionId == 10) goalsManager.Completed();
+                if (handItemId == 4 && missionId == 13) goalsManager.Completed();
+            }
+            else
+            {
+                Debug.Log("NULLLLLLL");
             }
             return;
         }
@@ -279,6 +285,10 @@ public class PlayerController : MonoBehaviour
                         if (missionId == 11 && id == 0)
                         {
                             minigame.PipeToVAC(selangAtVAC);
+                        }
+                        if (missionId == 12)
+                        {
+                            minigame.PipeToPatient(pipeline, selangAtVAC);
                         }
                         Debug.Log("Selang");
                         break;

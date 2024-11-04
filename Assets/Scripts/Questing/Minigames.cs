@@ -84,6 +84,13 @@ public class Minigames : MonoBehaviour
         Debug.Log("Pipe installed");
     }
 
+    public void PipeToPatient(GameObject pipeline, GameObject pipeInVAC)
+    {
+        pipeline.SetActive(true);
+        pipeInVAC.SetActive(false);
+        objective.Completed();
+    }
+
     public void VACActivation()
     {
         Debug.Log("Activating VAC");
