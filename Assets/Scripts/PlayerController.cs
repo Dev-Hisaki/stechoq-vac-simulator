@@ -203,6 +203,7 @@ public class PlayerController : MonoBehaviour
                 currentInteractable.SpawnInHand(id);
                 currentInteractable.transform.SetParent(pickPoint.transform);
                 currentInteractable.transform.localPosition = Vector3.zero;
+                currentInteractable.transform.localScale = Vector3.one;
                 handItemId = id;
 
                 if (handItemId == 1 && missionId == 1 || missionId == 8) goalsManager.Completed();
