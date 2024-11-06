@@ -84,6 +84,21 @@ public class Minigames : MonoBehaviour
         Debug.Log("Cover released for all children");
     }
 
+    public void SmallDresserApplying(GameObject patientSmallDresser)
+    {
+        if (patientSmallDresser.activeSelf == true)
+        {
+            Debug.LogWarning("Small Dresser Already Applied");
+            return;
+        }
+        else
+        {
+            patientSmallDresser.SetActive(true);
+            objective.Completed();
+        }
+        Debug.Log("Big Dresser Applying");
+    }
+
     public void PipeToVAC(GameObject selangInVAC)
     {
         if (selangInVAC.activeSelf) return;

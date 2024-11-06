@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
 
     [Space(25)]
     public GameObject smallDresser;
+    public GameObject patientSmallDresser;
 
     int handItemId;
 
@@ -133,6 +134,7 @@ public class PlayerController : MonoBehaviour
                 patientBigDresser = null;
                 patientHoledBigDresser = null;
                 smallDresser = null;
+                patientSmallDresser = null;
                 break;
 
             case 2:
@@ -219,11 +221,11 @@ public class PlayerController : MonoBehaviour
                     goalsManager.Completed();
                 }
                 if (handItemId == 5 && missionId == 10) goalsManager.Completed();
-                if (handItemId == 4 && missionId == 13) goalsManager.Completed();
-            }
-            else
-            {
-                Debug.Log("NULLLLLLL");
+                if (handItemId == 4 && missionId == 13)
+                {
+                    uncoverButton.SetActive(true);
+                    goalsManager.Completed();
+                }
             }
             return;
         }
@@ -239,10 +241,11 @@ public class PlayerController : MonoBehaviour
             if (handItemId == 4 && missionId == 14)
             {
                 minigame.SmallDresserUncover(smallDresser, newCoverMaterial);
+                uncoverButton.gameObject.SetActive(false);
                 isCovered = false;
             }
 
-            if (missionId == 6) Destroy(uncoverButton.gameObject);
+            if (missionId == 6) uncoverButton.gameObject.SetActive(false);
             if (currentInteractable != null)
             {
                 Transform itemInHand = pickPoint.transform.GetChild(0);
@@ -291,9 +294,18 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("Dresser Besar");
                         break;
                     case 4: // Dresser Kecil
-                        if (missionId == 15)
+                        if (isCovered)
                         {
-
+                            Debug.LogWarning("Uncover small dresser first");
+                        }
+                        else
+                        {
+                            if (missionId == 15)
+                            {
+                                minigame.SmallDresserApplying(patientSmallDresser);
+                                Destroy(itemInHand.gameObject);
+                                isCovered = true;
+                            }
                         }
                         Debug.Log("Dresser Kecil");
                         break;
