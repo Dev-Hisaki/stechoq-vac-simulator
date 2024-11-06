@@ -3505,8 +3505,6 @@ GameObject:
   - component: {fileID: 456467050}
   - component: {fileID: 456467049}
   - component: {fileID: 456467051}
-  - component: {fileID: 456467053}
-  - component: {fileID: 456467052}
   m_Layer: 6
   m_Name: Plester Kecil 2
   m_TagString: Untagged
@@ -3522,12 +3520,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456467047}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.49999997, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0.039353848}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.03935385}
   m_LocalScale: {x: 0.00026, y: 0.0011199999, z: 0.00125}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1521574860}
+  m_Father: {fileID: 692536634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &456467049
 MeshRenderer:
@@ -3596,40 +3594,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 369.88632, y: 413.89572, z: 1.0340759}
   m_Center: {x: 0.001953125, y: 0, z: 0}
---- !u!114 &456467052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456467047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064a94a50a8bcb34194119293113c5fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 4
-  itemName: Plester Kecil
-  desc: Digunakan untuk merekatkan selang pada luka
---- !u!114 &456467053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456467047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd9336eb934b7a047a86e6ff13f608a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationCanvas: {fileID: 0}
-  uIControllerCanvas: {fileID: 1151329562}
-  player: {fileID: 799265833}
 --- !u!1 &472455268
 GameObject:
   m_ObjectHideFlags: 0
@@ -4809,6 +4777,95 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683554545}
   m_Mesh: {fileID: 3635512377249483938, guid: fbbb588aae601a34da2c8e07cd9bc7d0, type: 3}
+--- !u!1 &692536633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 692536634}
+  - component: {fileID: 692536637}
+  - component: {fileID: 692536636}
+  - component: {fileID: 692536635}
+  m_Layer: 6
+  m_Name: Plester Kecil
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &692536634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692536633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 804787614}
+  - {fileID: 2122747582}
+  - {fileID: 456467048}
+  - {fileID: 2016191854}
+  m_Father: {fileID: 1521574860}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &692536635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692536633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9336eb934b7a047a86e6ff13f608a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationCanvas: {fileID: 487200333}
+  uIControllerCanvas: {fileID: 1151329562}
+  player: {fileID: 799265833}
+--- !u!65 &692536636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692536633}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.47743472, y: 0.02832365, z: 0.49007753}
+  m_Center: {x: -0.000000104308135, y: 0.015655756, z: -0.018964037}
+--- !u!114 &692536637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692536633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064a94a50a8bcb34194119293113c5fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4
+  itemName: 
+  desc: 
 --- !u!1 &697741494
 GameObject:
   m_ObjectHideFlags: 0
@@ -6793,11 +6850,12 @@ MonoBehaviour:
   foamPatient: {fileID: 715312688}
   bigDresser: {fileID: 845335234}
   uncoverButton: {fileID: 1727040238}
-  bigDresserNewMaterial: {fileID: 4646176674502666069, guid: 63b4ab349d95c724d950bc1fef6147a7, type: 3}
+  newCoverMaterial: {fileID: 0}
   patientBigDresser: {fileID: 535669940}
   patientHoledBigDresser: {fileID: 2013088488}
   selangAtVAC: {fileID: 934957838}
   pipeline: {fileID: 611956291}
+  smallDresser: {fileID: 0}
 --- !u!136 &799265837
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6908,8 +6966,6 @@ GameObject:
   - component: {fileID: 804787616}
   - component: {fileID: 804787615}
   - component: {fileID: 804787617}
-  - component: {fileID: 804787619}
-  - component: {fileID: 804787618}
   m_Layer: 6
   m_Name: Plester Kecil 4
   m_TagString: Untagged
@@ -6925,12 +6981,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804787613}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.49999997, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: -0.20599985}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -0.20599991}
   m_LocalScale: {x: 0.00026, y: 0.0011199999, z: 0.00125}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1521574860}
+  m_Father: {fileID: 692536634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &804787615
 MeshRenderer:
@@ -6999,40 +7055,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 369.88632, y: 413.89572, z: 1.0340759}
   m_Center: {x: 0.001953125, y: -0.0000038146973, z: 0}
---- !u!114 &804787618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804787613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064a94a50a8bcb34194119293113c5fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 4
-  itemName: Plester Kecil
-  desc: Digunakan untuk merekatkan selang pada luka
---- !u!114 &804787619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804787613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd9336eb934b7a047a86e6ff13f608a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationCanvas: {fileID: 0}
-  uIControllerCanvas: {fileID: 1151329562}
-  player: {fileID: 799265833}
 --- !u!1001 &805868773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7119,6 +7145,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4901401802178529349, guid: 24fe6c7876a2b754597bbc394a3246ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1496338382}
+    - targetCorrespondingSourceObject: {fileID: -9012914041621686039, guid: 24fe6c7876a2b754597bbc394a3246ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1908444655}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24fe6c7876a2b754597bbc394a3246ba, type: 3}
 --- !u!1 &811522918
@@ -13427,10 +13456,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 845335235}
-  - {fileID: 804787614}
-  - {fileID: 2122747582}
-  - {fileID: 456467048}
-  - {fileID: 2016191854}
+  - {fileID: 692536634}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1521880578
@@ -16131,6 +16157,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b96ce15290cdc4883eb22502a7b9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1908444654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1908444655}
+  - component: {fileID: 1908444657}
+  - component: {fileID: 1908444656}
+  m_Layer: 0
+  m_Name: Dresser Kecil Applied
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1908444655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908444654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.000644, y: 0.00002, z: 0.1328}
+  m_LocalScale: {x: 0.004618378, y: 0.002858717, z: 0.0011097203}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2013088489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1908444656
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908444654}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1908444657
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908444654}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1945931945
 GameObject:
   m_ObjectHideFlags: 0
@@ -16296,6 +16405,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6989494073819062302, guid: 24fe6c7876a2b754597bbc394a3246ba, type: 3}
   m_PrefabInstance: {fileID: 805868773}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2013088489 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -9012914041621686039, guid: 24fe6c7876a2b754597bbc394a3246ba, type: 3}
+  m_PrefabInstance: {fileID: 805868773}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2016191853
 GameObject:
   m_ObjectHideFlags: 0
@@ -16308,8 +16422,6 @@ GameObject:
   - component: {fileID: 2016191856}
   - component: {fileID: 2016191855}
   - component: {fileID: 2016191857}
-  - component: {fileID: 2016191859}
-  - component: {fileID: 2016191858}
   m_Layer: 6
   m_Name: Plester Kecil 1
   m_TagString: Untagged
@@ -16325,12 +16437,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016191853}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.49999997, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0.17072439}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1707244}
   m_LocalScale: {x: 0.00026, y: 0.0011199999, z: 0.00125}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1521574860}
+  m_Father: {fileID: 692536634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2016191855
 MeshRenderer:
@@ -16399,40 +16511,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 369.88696, y: 413.89633, z: 1.0340759}
   m_Center: {x: 0.001953125, y: 0, z: 0}
---- !u!114 &2016191858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016191853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064a94a50a8bcb34194119293113c5fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 4
-  itemName: Plester Kecil
-  desc: Digunakan untuk merekatkan selang pada luka
---- !u!114 &2016191859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016191853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd9336eb934b7a047a86e6ff13f608a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationCanvas: {fileID: 0}
-  uIControllerCanvas: {fileID: 1151329562}
-  player: {fileID: 799265833}
 --- !u!1 &2028370308
 GameObject:
   m_ObjectHideFlags: 0
@@ -17432,8 +17514,6 @@ GameObject:
   - component: {fileID: 2122747584}
   - component: {fileID: 2122747583}
   - component: {fileID: 2122747585}
-  - component: {fileID: 2122747587}
-  - component: {fileID: 2122747586}
   m_Layer: 6
   m_Name: Plester Kecil 3
   m_TagString: Untagged
@@ -17449,12 +17529,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122747581}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.49999997, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: -0.07945871}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -0.07945872}
   m_LocalScale: {x: 0.00026, y: 0.0011199999, z: 0.00125}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1521574860}
+  m_Father: {fileID: 692536634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2122747583
 MeshRenderer:
@@ -17523,40 +17603,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 369.88696, y: 413.89572, z: 1.0340759}
   m_Center: {x: 0, y: 0.0000038146973, z: 0}
---- !u!114 &2122747586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122747581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064a94a50a8bcb34194119293113c5fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 4
-  itemName: Plester Kecil
-  desc: Digunakan untuk merekatkan selang pada luka
---- !u!114 &2122747587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122747581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd9336eb934b7a047a86e6ff13f608a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationCanvas: {fileID: 0}
-  uIControllerCanvas: {fileID: 1151329562}
-  player: {fileID: 799265833}
 --- !u!224 &255865437561339524 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 506285810177202513, guid: bfb6c98a7783c97458db77041ad97e9e, type: 3}

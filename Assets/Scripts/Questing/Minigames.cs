@@ -71,9 +71,17 @@ public class Minigames : MonoBehaviour
         Debug.Log("Hole Cutting");
     }
 
-    public void SmallDresserApplying()
+    public void SmallDresserUncover(GameObject smallDresser, Material newMaterial)
     {
-        Debug.Log("Small Dresser Applying");
+        MeshRenderer[] meshRenderers = smallDresser.GetComponentsInChildren<MeshRenderer>();
+
+        foreach (MeshRenderer renderer in meshRenderers)
+        {
+            renderer.material = newMaterial;
+        }
+
+        objective.Completed();
+        Debug.Log("Cover released for all children");
     }
 
     public void PipeToVAC(GameObject selangInVAC)

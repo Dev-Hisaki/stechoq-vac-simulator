@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     [Space(25)]
     public GameObject bigDresser;
     public GameObject uncoverButton;
-    public Material bigDresserNewMaterial;
+    public Material newCoverMaterial;
     public GameObject patientBigDresser;
     public GameObject patientHoledBigDresser;
     bool isCovered = true;
@@ -71,6 +71,9 @@ public class PlayerController : MonoBehaviour
     [Space(25)]
     public GameObject selangAtVAC;
     public GameObject pipeline;
+
+    [Space(25)]
+    public GameObject smallDresser;
 
     int handItemId;
 
@@ -129,6 +132,7 @@ public class PlayerController : MonoBehaviour
                 selangAtVAC = null;
                 patientBigDresser = null;
                 patientHoledBigDresser = null;
+                smallDresser = null;
                 break;
 
             case 2:
@@ -228,9 +232,16 @@ public class PlayerController : MonoBehaviour
         {
             if (handItemId == 3 && missionId == 6)
             {
-                minigame.BigDresserUncover(bigDresser, bigDresserNewMaterial);
+                minigame.BigDresserUncover(bigDresser, newCoverMaterial);
                 isCovered = false;
             }
+
+            if (handItemId == 4 && missionId == 14)
+            {
+                minigame.SmallDresserUncover(smallDresser, newCoverMaterial);
+                isCovered = false;
+            }
+
             if (missionId == 6) Destroy(uncoverButton.gameObject);
             if (currentInteractable != null)
             {
@@ -274,11 +285,16 @@ public class PlayerController : MonoBehaviour
                             {
                                 minigame.BigDresserApplying(patientBigDresser);
                                 Destroy(itemInHand.gameObject);
+                                isCovered = true;
                             }
                         }
                         Debug.Log("Dresser Besar");
                         break;
                     case 4: // Dresser Kecil
+                        if (missionId == 15)
+                        {
+
+                        }
                         Debug.Log("Dresser Kecil");
                         break;
                     case 5: // Selang
@@ -289,6 +305,7 @@ public class PlayerController : MonoBehaviour
                         if (missionId == 12)
                         {
                             minigame.PipeToPatient(pipeline, selangAtVAC);
+                            Destroy(itemInHand.gameObject);
                         }
                         Debug.Log("Selang");
                         break;
