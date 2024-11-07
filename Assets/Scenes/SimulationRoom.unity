@@ -6850,12 +6850,13 @@ MonoBehaviour:
   foamPatient: {fileID: 715312688}
   bigDresser: {fileID: 845335234}
   uncoverButton: {fileID: 1727040238}
-  newCoverMaterial: {fileID: 0}
+  newCoverMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   patientBigDresser: {fileID: 535669940}
   patientHoledBigDresser: {fileID: 2013088488}
   selangAtVAC: {fileID: 934957838}
   pipeline: {fileID: 611956291}
-  smallDresser: {fileID: 0}
+  smallDresser: {fileID: 692536633}
+  patientSmallDresser: {fileID: 1908444654}
 --- !u!136 &799265837
 CapsuleCollider:
   m_ObjectHideFlags: 0
