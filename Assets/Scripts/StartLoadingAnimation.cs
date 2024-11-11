@@ -1,23 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StartLoadingAnimation : MonoBehaviour
 {
-    public Slider loadingSlider;
-    // Start is called before the first frame update
+    [SerializeField, Range(0f, 3f)] private float loadingTime = 0.1f;
+    [SerializeField] private Slider loadingSlider;
+
     void Start()
     {
-        loadingSlider.value = 0f;
+        if (loadingSlider)
+        {
+            loadingSlider.value = 0f;
+        }
+        else
+        {
+            Debug.LogWarning("Loading Slider is Null");
+            return;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (loadingSlider.value <= 100)
+        if (loadingSlider.value < 1f)
         {
-            loadingSlider.value += 0.01f;
+            loadingSlider.value += Time.deltaTime / loadingTime;
         }
     }
 }
