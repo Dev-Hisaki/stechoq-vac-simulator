@@ -7,14 +7,28 @@ public class PressureManager : MonoBehaviour
 {
     #region Variables
     [SerializeField] private TMP_InputField pressureField;
+    [SerializeField] private TMP_InputField processPressureField;
+    [SerializeField] private TMP_InputField pressureText;
     private int pressure;
+    private bool pressureOn;
+    private
     #endregion
 
     void Start()
     {
+        pressureOn = true;
         pressure = 100;
         if (pressureField == null) Debug.LogWarning("Pressure field not assigned yet");
         pressureField.text = pressure.ToString();
+    }
+
+    void Update()
+    {
+        if (pressureOn)
+        {
+
+            UpdatePressureDisplay();
+        }
     }
 
     public void Add(int num)
@@ -32,5 +46,22 @@ public class PressureManager : MonoBehaviour
     private void UpdateDisplay()
     {
         pressureField.text = pressure.ToString();
+    }
+
+    public void SetPressureTarget()
+    {
+        processPressureField.text = pressureField.text;
+    }
+
+    public void UpdatePressureDisplay(float meter)
+    {
+        meter += 1;
+        float pressureMeter = Mathf.FloorToInt(meter % 60);
+        pressureText.text = string.Format("{00}", pressureMeter);
+    }
+
+    public void StartPressureMeter()
+    {
+        pressureOn = true;
     }
 }
