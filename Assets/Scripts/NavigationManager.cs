@@ -42,6 +42,7 @@ public class NavigationManager : MonoBehaviour
 
     public void StartOperation()
     {
+        FindObjectOfType<VACAudioManager>().Play("VAC Starting");
         if (!continous.enabled)
         {
             process.SetActive(true);

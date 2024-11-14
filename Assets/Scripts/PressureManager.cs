@@ -11,13 +11,14 @@ public class PressureManager : MonoBehaviour
     [SerializeField] private TMP_InputField pressureText;
     private int pressure;
     private bool pressureOn;
-    private
+    private float pMeter;
     #endregion
 
     void Start()
     {
         pressureOn = true;
         pressure = 100;
+        pMeter = pressure;
         if (pressureField == null) Debug.LogWarning("Pressure field not assigned yet");
         pressureField.text = pressure.ToString();
     }
@@ -26,8 +27,7 @@ public class PressureManager : MonoBehaviour
     {
         if (pressureOn)
         {
-
-            UpdatePressureDisplay();
+            UpdatePressureDisplay(pMeter);
         }
     }
 

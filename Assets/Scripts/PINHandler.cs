@@ -120,6 +120,7 @@ public class PINHandler : MonoBehaviour
     {
         SetButtonsInteractable(false);
         yield return new WaitForSeconds(1);
+        FindObjectOfType<VACAudioManager>().Play("Error");
         ClearPIN();
         SetButtonsInteractable(true);
     }
@@ -128,6 +129,7 @@ public class PINHandler : MonoBehaviour
     {
         SetButtonsInteractable(false);
         yield return new WaitForSeconds(1);
+        FindObjectOfType<VACAudioManager>().Play("Success");
         Destroy(login);
         mainPanel.SetActive(true);
     }
