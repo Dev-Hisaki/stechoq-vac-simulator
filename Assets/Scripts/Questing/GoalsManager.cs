@@ -7,6 +7,7 @@ using TMPro;
 public class GoalsManager : MonoBehaviour
 {
     public TextMeshProUGUI questText;
+    public TMP_InputField questInputText;
     public Goals[] goals;
     private int id = -1;
 
@@ -21,6 +22,11 @@ public class GoalsManager : MonoBehaviour
 
     private void Start()
     {
+        if (questInputText == null)
+        {
+            questInputText = null;
+        }
+
         id++;
         SetInstruction(id);
     }
@@ -33,6 +39,8 @@ public class GoalsManager : MonoBehaviour
             Debug.LogWarning("Goal not found");
             return;
         }
+
+        questInputText.text = g.Instructions;
         questText.SetText(g.Instructions);
     }
 

@@ -19,6 +19,7 @@ public class NavigationManager : MonoBehaviour
 
     [Header("Additional")]
     [SerializeField] private TextMeshProUGUI title;
+    [SerializeField] private TMP_InputField pressureInputField;
     #endregion
 
     void Start()
@@ -28,15 +29,19 @@ public class NavigationManager : MonoBehaviour
 
     void Update()
     {
-        if (continous.enabled && !intermittent.enabled)
+        if (continous.enabled && !intermittent.enabled && pressureInputField.text == "110")
         {
             if (!start.enabled) start.enabled = true;
             return;
         }
-        else if (!continous.enabled && intermittent.enabled)
+        else if (!continous.enabled && intermittent.enabled && pressureInputField.text == "110")
         {
             if (!start.enabled) start.enabled = true;
             return;
+        }
+        else
+        {
+            start.enabled = false;
         }
     }
 
@@ -49,7 +54,7 @@ public class NavigationManager : MonoBehaviour
             home.SetActive(false);
             continous.enabled = false;
             intermittent.enabled = false;
-            Destroy(start.gameObject);
+            start.gameObject.SetActive(false);
             finish.SetActive(true);
 
             GetComponent<TimeManager>().StartTimer();
@@ -63,7 +68,7 @@ public class NavigationManager : MonoBehaviour
             home.SetActive(false);
             continous.enabled = false;
             intermittent.enabled = false;
-            Destroy(start.gameObject);
+            start.gameObject.SetActive(false);
             finish.SetActive(true);
 
             GetComponent<TimeManager>().StartTimer();

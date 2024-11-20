@@ -11,6 +11,7 @@ public class PINHandler : MonoBehaviour
     [SerializeField] private Button[] buttons;
     private byte[] pin = new byte[4];
     private int currentIndex = 0;
+    private GameObject quest;
     #endregion
 
     PanelManager manager;
@@ -21,6 +22,8 @@ public class PINHandler : MonoBehaviour
         manager = GetComponent<PanelManager>();
         login = GetComponent<PanelManager>().login;
         mainPanel = GetComponent<PanelManager>().mainPanel;
+
+        quest = GameObject.Find("QuestManager");
 
         if (manager == null || login == null || mainPanel == null)
         {
@@ -127,9 +130,11 @@ public class PINHandler : MonoBehaviour
 
     private IEnumerator DestroyWithDelay()
     {
+        GoalsManager goalsManager = quest.GetComponent<GoalsManager>();
         SetButtonsInteractable(false);
         yield return new WaitForSeconds(1);
         FindObjectOfType<VACAudioManager>().Play("Success");
+        goalsManager.Completed();
         Destroy(login);
         mainPanel.SetActive(true);
     }

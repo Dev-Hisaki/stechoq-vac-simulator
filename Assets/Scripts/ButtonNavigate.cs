@@ -69,6 +69,11 @@ public class ButtonNavigate : MonoBehaviour
         SceneManager.LoadScene(nextScene);
     }
 
+    public void LoadVACScene()
+    {
+        SceneManager.LoadScene(3);
+    }
+
     // Animation
     public void OpenSelectionMode()
     {

@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
     public GameObject patientSmallDresser;
 
     int handItemId;
+    ButtonNavigate buttonNavigate;
 
     public int RightFingerId
     {
@@ -91,6 +92,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        buttonNavigate = new ButtonNavigate();
         if (analog.GetComponent<CanvasGroup>() == null) analog.AddComponent<CanvasGroup>();
         if (informationButton.GetComponent<CanvasGroup>() == null) informationButton.AddComponent<CanvasGroup>();
 
@@ -207,7 +209,15 @@ public class PlayerController : MonoBehaviour
         {
             if (currentInteractable != null)
             {
-                currentInteractable.SpawnInHand(id);
+                if (id != 0)
+                {
+                    currentInteractable.SpawnInHand(id);
+                }
+                else
+                {
+                    buttonNavigate.LoadVACScene();
+                }
+
                 currentInteractable.transform.SetParent(pickPoint.transform);
                 currentInteractable.transform.localPosition = Vector3.zero;
                 currentInteractable.transform.localScale = Vector3.one;

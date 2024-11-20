@@ -641,6 +641,18 @@ MonoBehaviour:
           m_StringArgument: Button Press
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 771690796}
+        m_TargetAssemblyTypeName: GoalsManager, Assembly-CSharp
+        m_MethodName: Completed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &92525004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1609,7 +1621,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1793,6 +1805,7 @@ MonoBehaviour:
   home: {fileID: 1067097355}
   process: {fileID: 912480331}
   title: {fileID: 1897535012}
+  pressureInputField: {fileID: 1887885866}
 --- !u!114 &368307471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3304,16 +3317,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questText: {fileID: 367259267}
+  questInputText: {fileID: 1613553751}
   goals:
   - id: 0
     Instructions: 'Silahkan login menggunakan angka kredensial berikut: [0723]'
   - id: 1
-    Instructions: Silahkan atur pressure target menjadi 110
+    Instructions: Silahkan atur pressure target menjadi 110 lalu pilih mode vakum
+      yang akan digunakan dan tekan tombol start
   - id: 2
-    Instructions: Pilih mode vakum dibawah (continous atau intermittent)
-  - id: 3
-    Instructions: Tekan tombol start
-  - id: 4
     Instructions: Tunggu hingga 2 menit atau pressure sudah mencapai target, lalu
       tekan finish
 --- !u!4 &771690797
@@ -5674,7 +5685,7 @@ MonoBehaviour:
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
-  m_LineType: 0
+  m_LineType: 2
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
