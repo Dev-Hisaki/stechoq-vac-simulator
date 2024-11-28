@@ -200,41 +200,50 @@ public class PlayerController : MonoBehaviour
 
     public void PickupObject()
     {
+        void PickItem(int id)
+        {
+            if (id != 0)
+            {
+                currentInteractable.SpawnInHand(id);
+            }
+            else
+            {
+                buttonNavigate.LoadVACScene();
+            }
+
+            currentInteractable.transform.SetParent(pickPoint.transform);
+            currentInteractable.transform.localPosition = Vector3.zero;
+            currentInteractable.transform.localScale = Vector3.one;
+            goalsManager.Completed();
+        }
+
         int id = asetId.getId;
         int missionId = goalsManager.getMissionId;
-
-        Debug.Log("HandItemId: " + handItemId + " || ID: " + id + " || Mission ID: " + missionId);
 
         if (pickPoint.transform.childCount == 0)
         {
             if (currentInteractable != null)
             {
-                if (id != 0)
-                {
-                    currentInteractable.SpawnInHand(id);
-                }
-                else
-                {
-                    buttonNavigate.LoadVACScene();
-                }
-
-                currentInteractable.transform.SetParent(pickPoint.transform);
-                currentInteractable.transform.localPosition = Vector3.zero;
-                currentInteractable.transform.localScale = Vector3.one;
                 handItemId = id;
-
-                if (handItemId == 1 && missionId == 1 || missionId == 8) goalsManager.Completed();
-                if (handItemId == 2 && missionId == 3) goalsManager.Completed();
+                if (handItemId == 1 && missionId == 1 || missionId == 8)
+                {
+                    PickItem(id);
+                }
+                if (handItemId == 2 && missionId == 3) PickItem(id);
                 if (handItemId == 3 && missionId == 5)
                 {
                     uncoverButton.SetActive(true);
-                    goalsManager.Completed();
+                    PickItem(id);
                 }
-                if (handItemId == 5 && missionId == 10) goalsManager.Completed();
+                if (handItemId == 5 && missionId == 10) PickItem(id);
                 if (handItemId == 4 && missionId == 13)
                 {
                     uncoverButton.SetActive(true);
-                    goalsManager.Completed();
+                    PickItem(id);
+                }
+                if (missionId == 16)
+                {
+                    SceneManager.LoadScene(3);
                 }
             }
             return;
