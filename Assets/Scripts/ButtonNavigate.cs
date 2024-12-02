@@ -141,6 +141,10 @@ public class ButtonNavigate : MonoBehaviour
 
     public void Quit()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         Debug.Log("Apps exit successfully");
         Application.Quit();
     }
