@@ -1965,6 +1965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24a645495ec8fe478accbe5bf9f8840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finishPanel: {fileID: 1727891340}
 --- !u!1 &391841631
 GameObject:
   m_ObjectHideFlags: 0
@@ -3663,6 +3664,18 @@ MonoBehaviour:
           m_StringArgument: VAC Starting
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 368307472}
+        m_TargetAssemblyTypeName: FinalButtonHandler, Assembly-CSharp
+        m_MethodName: OpenFinishPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &714996763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3734,7 +3747,7 @@ MonoBehaviour:
   questInputText: {fileID: 1613553751}
   goals:
   - id: 0
-    Instructions: 'Silahkan login menggunakan angka kredensial berikut: [0723]'
+    Instructions: 'Silahkan login menggunakan angka kredensial berikut: [6543]'
   - id: 1
     Instructions: Silahkan atur pressure target menjadi 110 lalu pilih mode vakum
       yang akan digunakan dan tekan tombol start
@@ -6664,7 +6677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1727891341
 RectTransform:
   m_ObjectHideFlags: 0
